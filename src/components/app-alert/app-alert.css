@@ -1,0 +1,88 @@
+:host {
+  display: block;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --alert-border-width: 6px;
+  --alert-radius: 4px;
+}
+
+.alert-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  margin: 0 0 1rem 0;
+  border: 1px solid transparent;
+  border-left-width: var(--alert-border-width);
+  border-radius: var(--alert-radius);
+  background: #f5f5f5;
+}
+
+.alert-icon {
+  flex: 0 0 auto;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.15rem;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.85;
+}
+
+.alert-content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.alert-heading {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.alert-body {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.alert-dismiss {
+  flex: 0 0 auto;
+  border: none;
+  background: transparent;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  color: inherit;
+  padding: 0.1rem 0.35rem;
+  border-radius: var(--alert-radius);
+}
+
+.alert-dismiss:hover,
+.alert-dismiss:focus-visible {
+  background: rgba(0, 0, 0, 0.08);
+  outline: 2px solid currentColor;
+  outline-offset: 1px;
+}
+
+/* Severity themes */
+:host(.alert-info) .alert-container {
+  border-color: #26374a;
+  background: #d8eafd;
+  color: #26374a;
+}
+
+:host(.alert-success) .alert-container {
+  border-color: #278400;
+  background: #d8eeca;
+  color: #1e6300;
+}
+
+:host(.alert-warning) .alert-container {
+  border-color: #ee7100;
+  background: #faf3d1;
+  color: #6e4200;
+}
+
+:host(.alert-danger) .alert-container {
+  border-color: #b10e1e;
+  background: #f3e9e8;
+  color: #b10e1e;
+}

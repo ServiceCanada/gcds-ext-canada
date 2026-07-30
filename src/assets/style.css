@@ -1,0 +1,19 @@
+/**********
+  Custom styles for Canada.ca MWS GCDS extension documentation
+**********/
+
+.demo {
+  border: 1px dashed var(--gcds-border-default);
+  border-radius: var(--gcds-border-radius-sm);
+  padding: var(--gcds-spacing-300);
+  margin-bottom: var(--gcds-spacing-100);
+}
+
+pre {
+  background: var(--gcds-bg-light);
+  padding: var(--gcds-spacing-300);
+  border-radius: var(--gcds-border-radius-sm);
+  overflow-x: auto;
+  font-size: var(--gcds-font-sizes-text-small-mobile);
+  margin: 0 0 var(--gcds-spacing-300) 0;
+}

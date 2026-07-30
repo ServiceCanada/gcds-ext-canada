@@ -1,0 +1,44 @@
+{
+  "name": "gcds-ext-mws",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Government of Canada Design System extension - Canada.ca managed web services suite",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/service-canada/gcds-ext-canada.git"
+  },
+  "unpkg": "dist/gcds-ext-mws/gcds-ext-mws.esm.js",
+  "files": [
+    "dist/",
+    "loader/"
+  ],
+  "scripts": {
+    "build": "stencil build",
+    "watch:stencil": "stencil build --watch",
+    "watch:docs": "eleventy --serve",
+    "start": "concurrently \"npm run watch:stencil\" \"npm run watch:docs\"",
+    "docs:build": "npm run build && eleventy",
+    "docs:serve": "npm run build && eleventy --serve",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+    "@playwright/test": "^1.62.0",
+    "@stencil/core": "^4.43.5",
+    "concurrently": "^10.0.4",
+    "http-server": "^14.1.1",
+    "typescript": "^5.8.2"
+  },
+  "peerDependencies": {
+    "@gcds-core/components": "^1.3.1"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,24 @@
+---
+layout: layouts/core.njk
+title: Composants
+lang: fr
+altPage: /en/components/index.html
+dateModified: "2026-07-27"
+permalink: /fr/composants/index.html
+---
+
+<h1>Composants</h1>
+<p>Les composants du système de design GC sont des blocs de construction d'interface utilisateur qui répondent à différents objectifs utilisateur. Chacun est livré avec du code réutilisable, des conseils sur les meilleures pratiques et des conseils d'accessibilité.</p>
+
+<h2>Naviguer les composants</h2>
+<p>Nous proposons de nouveaux composants au fur et à mesure que nous les construisons.</p>
+
+<div class="my-600">
+    <gcds-grid tag="ul" columns="1fr" columns-tablet="1fr 1fr" columns-desktop="1fr 1fr 1fr">
+        {% for component in components %}
+            <gcds-card card-title="{{ component.name[lang] }}" href="/{{ lang }}/{{ i18n[lang].sideNavComponents | lower }}/{{ component.docsPath[lang] }}" card-title-tag="h3" badge="{{ component.badge }}" role="listitem">
+                <gcds-text>{{ component.description[lang] }}</gcds-text>
+            </gcds-card>
+        {% endfor %}
+    </gcds-grid>
+</div>

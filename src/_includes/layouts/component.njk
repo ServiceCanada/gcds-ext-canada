@@ -1,0 +1,75 @@
+---
+layout: layouts/core.njk
+---
+
+{% set lang = lang or 'en' %}
+{% set component = components_docs[component] %}
+{% set i18n = i18n[lang] %}
+
+{{ content | safe }}
+
+{% if fullWidth %}
+<gcds-container layout="page">
+{% endif %}
+<h2>{{ i18n.componentPropsProperties }}</h2>
+<table>
+  <thead>
+    <tr>
+      <th>{{ i18n.componentPropsAttribute }}</th>
+      <th>{{ i18n.componentPropsDescription }}</th>
+      <th>{{ i18n.componentPropsType }}</th>
+      <th>{{ i18n.componentPropsDefault }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for prop in component.props %}
+    <tr>
+      <td><code>{{ prop.attr }}</code></td>
+      <td>{{ prop.docs }}</td>
+      <td><code>{{ prop.type }}</code></td>
+      <td><code>{{ prop.default }}</code></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>{{ i18n.componentPropsEvents }}</h2>
+<table>
+  <thead>
+    <tr>
+      <th>{{ i18n.componentPropsEvent }}</th>
+      <th>{{ i18n.componentPropsDescription }}</th>
+      <th>{{ i18n.componentPropsType }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for event in component.events %}
+    <tr>
+      <td><code>{{ event.event }}</code></td>
+      <td>{{ event.docs }}</td>
+      <td><code>{{ event.complexType.original }}</code></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>{{ i18n.componentPropsSlots }}</h2>
+<table>
+  <thead>
+    <tr>
+      <th>{{ i18n.componentPropsSlot }}</th>
+      <th>{{ i18n.componentPropsDescription }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for slot in component.slots %}
+    <tr>
+      <td><code>{{ slot.name or "(default)" }}</code></td>
+      <td>{{ slot.docs }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% if fullWidth %}
+</gcds-container>
+{% endif %}

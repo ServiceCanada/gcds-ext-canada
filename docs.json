@@ -1,0 +1,191 @@
+{
+  "timestamp": "2026-07-29T17:46:51",
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "4.43.5",
+    "typescriptVersion": "5.8.3"
+  },
+  "components": [
+    {
+      "filePath": "src/components/app-alert/app-alert.tsx",
+      "encapsulation": "shadow",
+      "tag": "app-alert",
+      "readme": "# app-alert\n\n\n",
+      "docs": "",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- The main message content of the alert."
+        },
+        {
+          "name": "part",
+          "text": "container - The outer container of the alert."
+        },
+        {
+          "name": "part",
+          "text": "heading - The optional heading element."
+        },
+        {
+          "name": "part",
+          "text": "dismiss-button - The dismiss button, when `dismissible` is true."
+        }
+      ],
+      "usage": {},
+      "props": [
+        {
+          "name": "alertType",
+          "type": "\"danger\" | \"info\" | \"success\" | \"warning\"",
+          "complexType": {
+            "original": "AppAlertType",
+            "resolved": "\"danger\" | \"info\" | \"success\" | \"warning\"",
+            "references": {
+              "AppAlertType": {
+                "location": "local",
+                "path": "/Users/marc-andre/Projects/gcds-ext-canada/src/components/app-alert/app-alert.tsx",
+                "id": "src/components/app-alert/app-alert.tsx::AppAlertType"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "alert-type",
+          "reflectToAttr": false,
+          "docs": "Controls the colour and icon used for the alert.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'info'"
+            }
+          ],
+          "default": "'info'",
+          "values": [
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "info",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "dismissible",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "dismissible",
+          "reflectToAttr": false,
+          "docs": "When true, renders a button that lets the user dismiss the alert.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "heading",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "heading",
+          "reflectToAttr": false,
+          "docs": "Optional heading shown above the slotted message.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "appDismiss",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "void",
+            "resolved": "void",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted after the user dismisses the alert.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [],
+      "slots": [
+        {
+          "name": "",
+          "docs": "The main message content of the alert."
+        }
+      ],
+      "parts": [
+        {
+          "name": "container",
+          "docs": "The outer container of the alert."
+        },
+        {
+          "name": "dismiss-button",
+          "docs": "The dismiss button, when `dismissible` is true."
+        },
+        {
+          "name": "heading",
+          "docs": "The optional heading element."
+        }
+      ],
+      "states": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    }
+  ],
+  "typeLibrary": {
+    "src/components/app-alert/app-alert.tsx::AppAlertType": {
+      "declaration": "export type AppAlertType = 'info' | 'success' | 'warning' | 'danger';",
+      "docstring": "",
+      "path": "src/components/app-alert/app-alert.tsx"
+    }
+  }
+}

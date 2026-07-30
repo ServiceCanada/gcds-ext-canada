@@ -1,0 +1,15 @@
+{
+  "breadcrumbMWS": "Services Web Partagés",
+  "sideNavContact": "Contact",
+  "sideNavTitle": "SWP Canada.ca",
+  "sideNavComponents": "Composants",
+  "componentPropsProperties": "Propriétés",
+  "componentPropsAttribute": "Attributs",
+  "componentPropsDescription": "Description",
+  "componentPropsType": "Type",
+  "componentPropsDefault": "Valeur par défaut",
+  "componentPropsEvents": "Événements",
+  "componentPropsEvent": "Événement",
+  "componentPropsSlots": "Emplacements",
+  "componentPropsSlot": "Emplacement"
+}

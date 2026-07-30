@@ -1,0 +1,24 @@
+{% set lang = lang or 'en' %}
+{% set i18n = i18n[lang] %}
+
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+{% include "head.njk" %}
+<body>
+  {% include "header.njk" %}
+
+  <gcds-container id="main-content" tag="main" {% if fullWidth %}layout="full"{% else %}layout="page"{% endif %}>
+    {{ content | safe }}
+
+    {% if fullWidth %}
+    <gcds-container layout="page">
+    {% endif %}
+    <gcds-date-modified>{{ dateModified }}</gcds-date-modified>
+    {% if fullWidth %}
+    </gcds-container>
+    {% endif %}
+  </gcds-container>
+
+  <gcds-footer display="full"></gcds-footer>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": {
+    "en": "Alert",
+    "fr": "Alerte"
+  },
+  "tag": "app-alert",
+  "description": {
+    "en": "Displays important, contextual messages to users with four severity levels and an optional dismiss button.",
+    "fr": "Affiche des messages importants et contextuels aux utilisateurs avec quatre niveaux de gravité et un bouton de rejet facultatif."
+  },
+  "status": "stable",
+  "docsPath": {
+    "en": "alert",
+    "fr": "alerte"
+  }
+}
