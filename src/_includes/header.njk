@@ -1,18 +1,18 @@
-<gcds-header lang-href="{{ altPage }}" skip-to-href="#main-content">
+<gcds-header lang-href="{{ altPage | url }}" skip-to-href="#main-content">
     <gcds-search slot="search"></gcds-search>
     <gcds-breadcrumbs slot="breadcrumb">
         {% if not home %}
-        <gcds-breadcrumbs-item href="/">{{ i18n.breadcrumbMWS }}</gcds-breadcrumbs-item>
+        <gcds-breadcrumbs-item href="{{ '/' | url }}">{{ i18n.breadcrumbMWS }}</gcds-breadcrumbs-item>
         {% endif %}
         {% if component %}
-          <gcds-breadcrumbs-item href="/{{ lang }}/{{ i18n.sideNavComponents | lower }}">{{ i18n.sideNavComponents }}</gcds-breadcrumbs-item>
+          <gcds-breadcrumbs-item href="{{ '/' ~ lang ~ '/' ~ (i18n.sideNavComponents | lower) | url }}">{{ i18n.sideNavComponents }}</gcds-breadcrumbs-item>
         {% endif %}
         {% for breadcrumb in breadcrumbs %}
-          <gcds-breadcrumbs-item href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</gcds-breadcrumbs-item>
+          <gcds-breadcrumbs-item href="{{ breadcrumb.href | url }}">{{ breadcrumb.text }}</gcds-breadcrumbs-item>
         {% endfor %}
     </gcds-breadcrumbs>
     <gcds-top-nav label="Top navigation" alignment="end" slot="menu">
       <gcds-nav-link href="/" slot="home" role="listitem">{{ i18n.sideNavTitle }}</gcds-nav-link>
-      <gcds-nav-link href="/{{ lang }}/{{ i18n.sideNavComponents | lower }}" role="listitem">{{ i18n.sideNavComponents }}</gcds-nav-link>
+      <gcds-nav-link href="{{ '/' ~ lang ~ '/' ~ (i18n.sideNavComponents | lower) | url }}" role="listitem">{{ i18n.sideNavComponents }}</gcds-nav-link>
     </gcds-top-nav>
 </gcds-header>

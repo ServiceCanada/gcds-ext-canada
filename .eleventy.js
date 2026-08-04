@@ -19,6 +19,9 @@ module.exports = function (eleventyConfig) {
     templateFormats: ["*", "html", "md"] // adds support across formats
   });
 
+  // Detect GitHub Pages environment
+  const isGithubPages = process.env.GITHUB_ACTIONS === 'true';
+
   return {
     dir: {
       input: 'src',
@@ -28,5 +31,8 @@ module.exports = function (eleventyConfig) {
     },
     htmlTemplateEngine: 'njk',
     markdownTemplateEngine: 'njk',
+
+    // Only apply prefix when deployed on GitHub Pages
+    pathPrefix: isGithubPages ? "/gcds-ext-canada" : "",
   };
 };
