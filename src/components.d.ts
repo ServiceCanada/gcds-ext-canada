@@ -5,28 +5,10 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AppAlertType } from "./components/app-alert/app-alert";
-export { AppAlertType } from "./components/app-alert/app-alert";
 export namespace Components {
-    interface AppAlert {
-        /**
-          * Controls the colour and icon used for the alert.
-          * @default 'info'
-         */
-        "alertType": AppAlertType;
-        /**
-          * When true, renders a button that lets the user dismiss the alert.
-          * @default false
-         */
-        "dismissible": boolean;
-        /**
-          * Optional heading shown above the slotted message.
-         */
-        "heading"?: string;
-    }
     interface GcdsExtMwsServices {
         /**
-          * Number of columns to distribute items across. Default: 3
+          * Number of columns to distribute items across.
           * @default 3
          */
         "columns": 1 | 2 | 3;
@@ -55,28 +37,7 @@ export namespace Components {
         "serviceTitle": string;
     }
 }
-export interface AppAlertCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLAppAlertElement;
-}
 declare global {
-    interface HTMLAppAlertElementEventMap {
-        "appDismiss": void;
-    }
-    interface HTMLAppAlertElement extends Components.AppAlert, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAppAlertElementEventMap>(type: K, listener: (this: HTMLAppAlertElement, ev: AppAlertCustomEvent<HTMLAppAlertElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAppAlertElementEventMap>(type: K, listener: (this: HTMLAppAlertElement, ev: AppAlertCustomEvent<HTMLAppAlertElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLAppAlertElement: {
-        prototype: HTMLAppAlertElement;
-        new (): HTMLAppAlertElement;
-    };
     interface HTMLGcdsExtMwsServicesElement extends Components.GcdsExtMwsServices, HTMLStencilElement {
     }
     var HTMLGcdsExtMwsServicesElement: {
@@ -90,7 +51,6 @@ declare global {
         new (): HTMLGcdsExtMwsServicesItemElement;
     };
     interface HTMLElementTagNameMap {
-        "app-alert": HTMLAppAlertElement;
         "gcds-ext-mws-services": HTMLGcdsExtMwsServicesElement;
         "gcds-ext-mws-services-item": HTMLGcdsExtMwsServicesItemElement;
     }
@@ -98,29 +58,9 @@ declare global {
 declare namespace LocalJSX {
     type OneOf<K extends string, PropT, AttrT = PropT> = { [P in K]: PropT } & { [P in `attr:${K}` | `prop:${K}`]?: never } | { [P in `attr:${K}`]: AttrT } & { [P in K | `prop:${K}`]?: never } | { [P in `prop:${K}`]: PropT } & { [P in K | `attr:${K}`]?: never };
 
-    interface AppAlert {
-        /**
-          * Controls the colour and icon used for the alert.
-          * @default 'info'
-         */
-        "alertType"?: AppAlertType;
-        /**
-          * When true, renders a button that lets the user dismiss the alert.
-          * @default false
-         */
-        "dismissible"?: boolean;
-        /**
-          * Optional heading shown above the slotted message.
-         */
-        "heading"?: string;
-        /**
-          * Emitted after the user dismisses the alert.
-         */
-        "onAppDismiss"?: (event: AppAlertCustomEvent<void>) => void;
-    }
     interface GcdsExtMwsServices {
         /**
-          * Number of columns to distribute items across. Default: 3
+          * Number of columns to distribute items across.
           * @default 3
          */
         "columns"?: 1 | 2 | 3;
@@ -149,11 +89,6 @@ declare namespace LocalJSX {
         "serviceTitle": string;
     }
 
-    interface AppAlertAttributes {
-        "alertType": AppAlertType;
-        "heading": string;
-        "dismissible": boolean;
-    }
     interface GcdsExtMwsServicesAttributes {
         "servicesTitle": string;
         "hideTitle": boolean;
@@ -166,7 +101,6 @@ declare namespace LocalJSX {
     }
 
     interface IntrinsicElements {
-        "app-alert": Omit<AppAlert, keyof AppAlertAttributes> & { [K in keyof AppAlert & keyof AppAlertAttributes]?: AppAlert[K] } & { [K in keyof AppAlert & keyof AppAlertAttributes as `attr:${K}`]?: AppAlertAttributes[K] } & { [K in keyof AppAlert & keyof AppAlertAttributes as `prop:${K}`]?: AppAlert[K] };
         "gcds-ext-mws-services": Omit<GcdsExtMwsServices, keyof GcdsExtMwsServicesAttributes> & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes]?: GcdsExtMwsServices[K] } & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes as `attr:${K}`]?: GcdsExtMwsServicesAttributes[K] } & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes as `prop:${K}`]?: GcdsExtMwsServices[K] } & OneOf<"servicesTitle", GcdsExtMwsServices["servicesTitle"], GcdsExtMwsServicesAttributes["servicesTitle"]>;
         "gcds-ext-mws-services-item": Omit<GcdsExtMwsServicesItem, keyof GcdsExtMwsServicesItemAttributes> & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes]?: GcdsExtMwsServicesItem[K] } & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes as `attr:${K}`]?: GcdsExtMwsServicesItemAttributes[K] } & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes as `prop:${K}`]?: GcdsExtMwsServicesItem[K] } & OneOf<"serviceTitle", GcdsExtMwsServicesItem["serviceTitle"], GcdsExtMwsServicesItemAttributes["serviceTitle"]> & OneOf<"href", GcdsExtMwsServicesItem["href"], GcdsExtMwsServicesItemAttributes["href"]>;
     }
@@ -175,7 +109,6 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "app-alert": LocalJSX.IntrinsicElements["app-alert"] & JSXBase.HTMLAttributes<HTMLAppAlertElement>;
             "gcds-ext-mws-services": LocalJSX.IntrinsicElements["gcds-ext-mws-services"] & JSXBase.HTMLAttributes<HTMLGcdsExtMwsServicesElement>;
             "gcds-ext-mws-services-item": LocalJSX.IntrinsicElements["gcds-ext-mws-services-item"] & JSXBase.HTMLAttributes<HTMLGcdsExtMwsServicesItemElement>;
         }

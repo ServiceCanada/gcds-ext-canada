@@ -23,7 +23,6 @@ export class GcdsExtMwsServices {
 
   /**
    * Number of columns to distribute items across.
-   * Default: 3
    */
   @Prop() columns: 1 | 2 | 3 = 3;
 
