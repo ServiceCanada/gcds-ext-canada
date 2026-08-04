@@ -1,0 +1,14 @@
+@layer reset, default;
+
+@layer reset {
+  :host {
+    display: block;
+  }
+}
+
+@layer default {
+  :host gcds-heading {
+    --gcds-heading-h2-desktop: var(--gcds-heading-h3-desktop);
+    --gcds-heading-h2-mobile: var(--gcds-heading-h3-mobile);
+  }
+}

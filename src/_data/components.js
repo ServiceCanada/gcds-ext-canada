@@ -21,7 +21,5 @@ module.exports = () => {
       return JSON.parse(fs.readFileSync(metaPath, 'utf-8'));
     })
     .filter(Boolean);
-
-  entries.sort((a, b) => a.name.localeCompare(b.name));
   return entries;
 };

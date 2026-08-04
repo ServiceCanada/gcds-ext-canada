@@ -11,7 +11,10 @@
   "componentPropsEvents": "Events",
   "componentPropsEvent": "Event",
   "componentPropsSlots": "Slots",
-  "componentPropsSlot": "Slot"
+  "componentPropsSlot": "Slot",
+  "componentPropsNoProperties": "No properties available for this component.",
+  "componentPropsNoEvents": "No events available for this component.",
+  "componentPropsNoSlots": "No slots available for this component."
 }
 
 

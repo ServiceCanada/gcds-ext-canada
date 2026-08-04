@@ -21,7 +21,7 @@
     "build": "stencil build",
     "watch:stencil": "stencil build --watch",
     "watch:docs": "eleventy --serve",
-    "start": "concurrently \"npm run watch:stencil\" \"npm run watch:docs\"",
+    "start": "npm run build && concurrently \"npm run watch:stencil\" \"npm run watch:docs\"",
     "docs:build": "npm run build && eleventy",
     "docs:serve": "npm run build && eleventy --serve",
     "test": "playwright test",
@@ -31,7 +31,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
-    "@playwright/test": "^1.62.0",
+    "@playwright/test": "^1.62.1",
     "@stencil/core": "^4.43.5",
     "concurrently": "^10.0.4",
     "http-server": "^14.1.1",

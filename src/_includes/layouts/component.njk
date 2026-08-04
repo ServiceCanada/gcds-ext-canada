@@ -11,7 +11,9 @@ layout: layouts/core.njk
 {% if fullWidth %}
 <gcds-container layout="page">
 {% endif %}
+
 <h2>{{ i18n.componentPropsProperties }}</h2>
+{% if component.props.length > 0 %}
 <table>
   <thead>
     <tr>
@@ -32,8 +34,12 @@ layout: layouts/core.njk
     {% endfor %}
   </tbody>
 </table>
+{% else %}
+<p>{{ i18n.componentPropsNoProperties }}</p>
+{% endif %}
 
 <h2>{{ i18n.componentPropsEvents }}</h2>
+{% if component.events.length > 0 %}
 <table>
   <thead>
     <tr>
@@ -52,8 +58,12 @@ layout: layouts/core.njk
     {% endfor %}
   </tbody>
 </table>
+{% else %}
+<p>{{ i18n.componentPropsNoEvents }}</p>
+{% endif %}
 
 <h2>{{ i18n.componentPropsSlots }}</h2>
+{% if component.slots.length > 0 %}
 <table>
   <thead>
     <tr>
@@ -70,6 +80,10 @@ layout: layouts/core.njk
     {% endfor %}
   </tbody>
 </table>
+{% else %}
+<p>{{ i18n.componentPropsNoSlots }}</p>
+{% endif %}
+
 {% if fullWidth %}
 </gcds-container>
 {% endif %}

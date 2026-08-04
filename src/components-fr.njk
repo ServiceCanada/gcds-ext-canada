@@ -13,6 +13,8 @@ permalink: /fr/composants/index.html
 <h2>Naviguer les composants</h2>
 <p>Nous proposons de nouveaux composants au fur et à mesure que nous les construisons.</p>
 
+{% set components = components | sort(attribute='name.' ~ lang) %}
+
 <div class="my-600">
     <gcds-grid tag="ul" columns="1fr" columns-tablet="1fr 1fr" columns-desktop="1fr 1fr 1fr">
         {% for component in components %}

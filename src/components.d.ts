@@ -24,6 +24,36 @@ export namespace Components {
          */
         "heading"?: string;
     }
+    interface GcdsExtMwsServices {
+        /**
+          * Number of columns to distribute items across. Default: 3
+          * @default 3
+         */
+        "columns": 1 | 2 | 3;
+        /**
+          * Hide the title visually.
+          * @default false
+         */
+        "hideTitle"?: boolean;
+        /**
+          * Title text (required)
+         */
+        "servicesTitle": string;
+    }
+    interface GcdsExtMwsServicesItem {
+        /**
+          * Optional description. If omitted, the component will render the default slot instead.
+         */
+        "description"?: string;
+        /**
+          * Link href
+         */
+        "href": string;
+        /**
+          * Service title
+         */
+        "serviceTitle": string;
+    }
 }
 export interface AppAlertCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -47,11 +77,27 @@ declare global {
         prototype: HTMLAppAlertElement;
         new (): HTMLAppAlertElement;
     };
+    interface HTMLGcdsExtMwsServicesElement extends Components.GcdsExtMwsServices, HTMLStencilElement {
+    }
+    var HTMLGcdsExtMwsServicesElement: {
+        prototype: HTMLGcdsExtMwsServicesElement;
+        new (): HTMLGcdsExtMwsServicesElement;
+    };
+    interface HTMLGcdsExtMwsServicesItemElement extends Components.GcdsExtMwsServicesItem, HTMLStencilElement {
+    }
+    var HTMLGcdsExtMwsServicesItemElement: {
+        prototype: HTMLGcdsExtMwsServicesItemElement;
+        new (): HTMLGcdsExtMwsServicesItemElement;
+    };
     interface HTMLElementTagNameMap {
         "app-alert": HTMLAppAlertElement;
+        "gcds-ext-mws-services": HTMLGcdsExtMwsServicesElement;
+        "gcds-ext-mws-services-item": HTMLGcdsExtMwsServicesItemElement;
     }
 }
 declare namespace LocalJSX {
+    type OneOf<K extends string, PropT, AttrT = PropT> = { [P in K]: PropT } & { [P in `attr:${K}` | `prop:${K}`]?: never } | { [P in `attr:${K}`]: AttrT } & { [P in K | `prop:${K}`]?: never } | { [P in `prop:${K}`]: PropT } & { [P in K | `attr:${K}`]?: never };
+
     interface AppAlert {
         /**
           * Controls the colour and icon used for the alert.
@@ -72,15 +118,57 @@ declare namespace LocalJSX {
          */
         "onAppDismiss"?: (event: AppAlertCustomEvent<void>) => void;
     }
+    interface GcdsExtMwsServices {
+        /**
+          * Number of columns to distribute items across. Default: 3
+          * @default 3
+         */
+        "columns"?: 1 | 2 | 3;
+        /**
+          * Hide the title visually.
+          * @default false
+         */
+        "hideTitle"?: boolean;
+        /**
+          * Title text (required)
+         */
+        "servicesTitle": string;
+    }
+    interface GcdsExtMwsServicesItem {
+        /**
+          * Optional description. If omitted, the component will render the default slot instead.
+         */
+        "description"?: string;
+        /**
+          * Link href
+         */
+        "href": string;
+        /**
+          * Service title
+         */
+        "serviceTitle": string;
+    }
 
     interface AppAlertAttributes {
         "alertType": AppAlertType;
         "heading": string;
         "dismissible": boolean;
     }
+    interface GcdsExtMwsServicesAttributes {
+        "servicesTitle": string;
+        "hideTitle": boolean;
+        "columns": 1 | 2 | 3;
+    }
+    interface GcdsExtMwsServicesItemAttributes {
+        "serviceTitle": string;
+        "href": string;
+        "description": string;
+    }
 
     interface IntrinsicElements {
         "app-alert": Omit<AppAlert, keyof AppAlertAttributes> & { [K in keyof AppAlert & keyof AppAlertAttributes]?: AppAlert[K] } & { [K in keyof AppAlert & keyof AppAlertAttributes as `attr:${K}`]?: AppAlertAttributes[K] } & { [K in keyof AppAlert & keyof AppAlertAttributes as `prop:${K}`]?: AppAlert[K] };
+        "gcds-ext-mws-services": Omit<GcdsExtMwsServices, keyof GcdsExtMwsServicesAttributes> & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes]?: GcdsExtMwsServices[K] } & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes as `attr:${K}`]?: GcdsExtMwsServicesAttributes[K] } & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes as `prop:${K}`]?: GcdsExtMwsServices[K] } & OneOf<"servicesTitle", GcdsExtMwsServices["servicesTitle"], GcdsExtMwsServicesAttributes["servicesTitle"]>;
+        "gcds-ext-mws-services-item": Omit<GcdsExtMwsServicesItem, keyof GcdsExtMwsServicesItemAttributes> & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes]?: GcdsExtMwsServicesItem[K] } & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes as `attr:${K}`]?: GcdsExtMwsServicesItemAttributes[K] } & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes as `prop:${K}`]?: GcdsExtMwsServicesItem[K] } & OneOf<"serviceTitle", GcdsExtMwsServicesItem["serviceTitle"], GcdsExtMwsServicesItemAttributes["serviceTitle"]> & OneOf<"href", GcdsExtMwsServicesItem["href"], GcdsExtMwsServicesItemAttributes["href"]>;
     }
 }
 export { LocalJSX as JSX };
@@ -88,6 +176,8 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "app-alert": LocalJSX.IntrinsicElements["app-alert"] & JSXBase.HTMLAttributes<HTMLAppAlertElement>;
+            "gcds-ext-mws-services": LocalJSX.IntrinsicElements["gcds-ext-mws-services"] & JSXBase.HTMLAttributes<HTMLGcdsExtMwsServicesElement>;
+            "gcds-ext-mws-services-item": LocalJSX.IntrinsicElements["gcds-ext-mws-services-item"] & JSXBase.HTMLAttributes<HTMLGcdsExtMwsServicesItemElement>;
         }
     }
 }

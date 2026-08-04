@@ -11,5 +11,8 @@
   "componentPropsEvents": "Événements",
   "componentPropsEvent": "Événement",
   "componentPropsSlots": "Emplacements",
-  "componentPropsSlot": "Emplacement"
+  "componentPropsSlot": "Emplacement",
+  "componentPropsNoProperties": "Aucune propriété disponible pour ce composant.",
+  "componentPropsNoEvents": "Aucun événement disponible pour ce composant.",
+  "componentPropsNoSlots": "Aucun emplacement disponible pour ce composant."
 }
