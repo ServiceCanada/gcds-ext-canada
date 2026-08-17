@@ -1,6 +1,7 @@
-import { Component, Prop, State, Event, EventEmitter, h, Host } from '@stencil/core';
+import { Component, Prop, h, Element } from '@stencil/core';
 
 /**
+ * @slot heading - Custom heading content.
  * @slot - The main content of the container.
  */
 @Component({
@@ -9,10 +10,14 @@ import { Component, Prop, State, Event, EventEmitter, h, Host } from '@stencil/c
   shadow: true,
 })
 export class GcdsExtMwsServicesItem {
+  @Element() host!: HTMLElement;
+
   /**
-   * Service title
+   * Service title.
+   *
+   * Used as a fallback when the heading slot is not provided.
    */
-  @Prop() serviceTitle!: string;
+  @Prop() heading?: string;
 
   /**
    * Link href
@@ -25,13 +30,28 @@ export class GcdsExtMwsServicesItem {
    */
   @Prop() description?: string;
 
+  private hasHeadingSlot(): boolean {
+    return !!this.host.querySelector('[slot="heading"]');
+  }
+
   render() {
+    const hasHeadingSlot = this.hasHeadingSlot();
+
     return (
       <div class="gcds-ext-mws-services-item">
         <gcds-heading tag="h3" margin-bottom="0" margin-top="0">
-          <gcds-link href={this.href}>{this.serviceTitle}</gcds-link>
+          <gcds-link href={this.href}>
+            {hasHeadingSlot ? (
+              <slot name="heading"></slot>
+            ) : (
+              this.heading
+            )}
+          </gcds-link>
         </gcds-heading>
-        <gcds-text margin-bottom="100">{this.description ? this.description : <slot />}</gcds-text>
+
+        <gcds-text margin-bottom="100">
+          {this.description ? this.description : <slot />}
+        </gcds-text>
       </div>
     );
   }

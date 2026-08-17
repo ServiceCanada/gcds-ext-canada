@@ -13,14 +13,14 @@ export namespace Components {
          */
         "columns": 1 | 2 | 3;
         /**
-          * Hide the title visually.
+          * Heading text (required)
+         */
+        "heading": string;
+        /**
+          * Hide the Heading visually.
           * @default false
          */
-        "hideTitle"?: boolean;
-        /**
-          * Title text (required)
-         */
-        "servicesTitle": string;
+        "hideHeading"?: boolean;
     }
     interface GcdsExtMwsServicesItem {
         /**
@@ -28,13 +28,13 @@ export namespace Components {
          */
         "description"?: string;
         /**
+          * Service title.  Used as a fallback when the heading slot is not provided.
+         */
+        "heading"?: string;
+        /**
           * Link href
          */
         "href": string;
-        /**
-          * Service title
-         */
-        "serviceTitle": string;
     }
 }
 declare global {
@@ -65,14 +65,14 @@ declare namespace LocalJSX {
          */
         "columns"?: 1 | 2 | 3;
         /**
-          * Hide the title visually.
+          * Heading text (required)
+         */
+        "heading": string;
+        /**
+          * Hide the Heading visually.
           * @default false
          */
-        "hideTitle"?: boolean;
-        /**
-          * Title text (required)
-         */
-        "servicesTitle": string;
+        "hideHeading"?: boolean;
     }
     interface GcdsExtMwsServicesItem {
         /**
@@ -80,29 +80,29 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
+          * Service title.  Used as a fallback when the heading slot is not provided.
+         */
+        "heading"?: string;
+        /**
           * Link href
          */
         "href": string;
-        /**
-          * Service title
-         */
-        "serviceTitle": string;
     }
 
     interface GcdsExtMwsServicesAttributes {
-        "servicesTitle": string;
-        "hideTitle": boolean;
+        "heading": string;
+        "hideHeading": boolean;
         "columns": 1 | 2 | 3;
     }
     interface GcdsExtMwsServicesItemAttributes {
-        "serviceTitle": string;
+        "heading": string;
         "href": string;
         "description": string;
     }
 
     interface IntrinsicElements {
-        "gcds-ext-mws-services": Omit<GcdsExtMwsServices, keyof GcdsExtMwsServicesAttributes> & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes]?: GcdsExtMwsServices[K] } & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes as `attr:${K}`]?: GcdsExtMwsServicesAttributes[K] } & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes as `prop:${K}`]?: GcdsExtMwsServices[K] } & OneOf<"servicesTitle", GcdsExtMwsServices["servicesTitle"], GcdsExtMwsServicesAttributes["servicesTitle"]>;
-        "gcds-ext-mws-services-item": Omit<GcdsExtMwsServicesItem, keyof GcdsExtMwsServicesItemAttributes> & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes]?: GcdsExtMwsServicesItem[K] } & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes as `attr:${K}`]?: GcdsExtMwsServicesItemAttributes[K] } & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes as `prop:${K}`]?: GcdsExtMwsServicesItem[K] } & OneOf<"serviceTitle", GcdsExtMwsServicesItem["serviceTitle"], GcdsExtMwsServicesItemAttributes["serviceTitle"]> & OneOf<"href", GcdsExtMwsServicesItem["href"], GcdsExtMwsServicesItemAttributes["href"]>;
+        "gcds-ext-mws-services": Omit<GcdsExtMwsServices, keyof GcdsExtMwsServicesAttributes> & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes]?: GcdsExtMwsServices[K] } & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes as `attr:${K}`]?: GcdsExtMwsServicesAttributes[K] } & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes as `prop:${K}`]?: GcdsExtMwsServices[K] } & OneOf<"heading", GcdsExtMwsServices["heading"], GcdsExtMwsServicesAttributes["heading"]>;
+        "gcds-ext-mws-services-item": Omit<GcdsExtMwsServicesItem, keyof GcdsExtMwsServicesItemAttributes> & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes]?: GcdsExtMwsServicesItem[K] } & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes as `attr:${K}`]?: GcdsExtMwsServicesItemAttributes[K] } & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes as `prop:${K}`]?: GcdsExtMwsServicesItem[K] } & OneOf<"href", GcdsExtMwsServicesItem["href"], GcdsExtMwsServicesItemAttributes["href"]>;
     }
 }
 export { LocalJSX as JSX };

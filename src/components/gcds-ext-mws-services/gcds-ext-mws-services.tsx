@@ -1,6 +1,7 @@
 import { Component, Prop, h, Element } from '@stencil/core';
 
 /**
+ * @slot heading - Custom heading content.
  * @slot - The main content of the container.
  */
 @Component({
@@ -12,14 +13,14 @@ export class GcdsExtMwsServices {
   @Element() host!: HTMLElement;
 
   /**
-   * Title text (required)
+   * Heading text (required)
    */
-  @Prop() servicesTitle!: string;
+  @Prop() heading!: string;
 
   /**
-   * Hide the title visually.
+   * Hide the Heading visually.
    */
-  @Prop() hideTitle?: boolean = false;
+  @Prop() hideHeading?: boolean = false;
 
   /**
    * Number of columns to distribute items across.
@@ -37,20 +38,20 @@ export class GcdsExtMwsServices {
     return { mobile, tablet, desktop };
   }
 
-  private renderTitle() {
-    const hide = this.hideTitle === true;
+  private renderHeading() {
+    const hide = this.hideHeading === true;
 
     if (hide) {
       return (
         <gcds-sr-only tag="h2">
-          {this.servicesTitle}
+          <slot name="heading">{this.heading}</slot>
         </gcds-sr-only>
       );
     }
 
     return (
       <gcds-heading tag="h2">
-        {this.servicesTitle}
+        <slot name="heading">{this.heading}</slot>
       </gcds-heading>
     );
   }
@@ -60,7 +61,7 @@ export class GcdsExtMwsServices {
 
     return (
       <div class="gcds-ext-mws-services">
-        {this.renderTitle()}
+        {this.renderHeading()}
 
         <gcds-grid
           columns={mobile}

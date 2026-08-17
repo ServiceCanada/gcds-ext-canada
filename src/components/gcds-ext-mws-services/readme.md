@@ -7,18 +7,19 @@
 
 ## Properties
 
-| Property                     | Attribute        | Description                                   | Type                   | Default     |
-| ---------------------------- | ---------------- | --------------------------------------------- | ---------------------- | ----------- |
-| `columns`                    | `columns`        | Number of columns to distribute items across. | `1 \| 2 \| 3`          | `3`         |
-| `hideTitle`                  | `hide-title`     | Hide the title visually.                      | `boolean \| undefined` | `false`     |
-| `servicesTitle` _(required)_ | `services-title` | Title text (required)                         | `string`               | `undefined` |
+| Property               | Attribute      | Description                                   | Type                   | Default     |
+| ---------------------- | -------------- | --------------------------------------------- | ---------------------- | ----------- |
+| `columns`              | `columns`      | Number of columns to distribute items across. | `1 \| 2 \| 3`          | `3`         |
+| `heading` _(required)_ | `heading`      | Heading text (required)                       | `string`               | `undefined` |
+| `hideHeading`          | `hide-heading` | Hide the Heading visually.                    | `boolean \| undefined` | `false`     |
 
 
 ## Slots
 
-| Slot | Description                        |
-| ---- | ---------------------------------- |
-|      | The main content of the container. |
+| Slot        | Description                        |
+| ----------- | ---------------------------------- |
+|             | The main content of the container. |
+| `"heading"` | Custom heading content.            |
 
 
 ----------------------------------------------
