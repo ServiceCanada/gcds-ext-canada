@@ -25,7 +25,6 @@ export const config: Config = {
       file: 'dist/docs.json'
     },
     // A ready-to-run browser build, used both for local dev (`npm start`)
-    // and as the bundle Playwright/Eleventy load in the browser.
     {
       type: 'www',
       serviceWorker: null,

@@ -23,15 +23,11 @@
     "watch:docs": "eleventy --serve",
     "start": "npm run build && concurrently \"npm run watch:stencil\" \"npm run watch:docs\"",
     "docs:build": "npm run build && eleventy",
-    "docs:serve": "npm run build && eleventy --serve",
-    "test": "playwright test",
-    "test:ui": "playwright test --ui",
-    "test:headed": "playwright test --headed"
+    "docs:serve": "npm run build && eleventy --serve"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
-    "@playwright/test": "^1.62.1",
     "@stencil/core": "^4.43.5",
     "concurrently": "^10.0.4",
     "http-server": "^14.1.1",

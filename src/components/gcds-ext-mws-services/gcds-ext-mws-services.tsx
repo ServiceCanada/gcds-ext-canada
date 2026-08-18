@@ -70,10 +70,6 @@ export class GcdsExtMwsServices {
         >
           <slot></slot>
         </gcds-grid>
-
-        <div class="more-information">
-          <slot name="moreInformation"></slot>
-        </div>
       </div>
     );
   }

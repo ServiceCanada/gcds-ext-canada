@@ -4,9 +4,7 @@ loader/
 www/
 _site/
 test-results/
-playwright-report/
 blob-report/
-playwright/.cache/
 .DS_Store
 *.log
 .stencil/

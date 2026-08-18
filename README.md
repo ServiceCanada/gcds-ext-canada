@@ -12,7 +12,6 @@ Built with Stencil, the library produces framework-agnostic Web Components that 
 * TypeScript support
 * Accessibility-first development
 * Automated component documentation
-* Playwright end-to-end testing
 * Eleventy-powered documentation site
 * Bilingual documentation support (English and French)
 * Compatible with GCDS components
@@ -92,25 +91,6 @@ Documentation is generated using Eleventy and includes:
 
 Component API metadata is generated directly from the Stencil source to ensure documentation remains synchronized with implementation.
 
-## Testing
-
-Run end-to-end tests:
-
-```bash
-npm test
-```
-
-Run tests with the Playwright UI:
-
-```bash
-npm run test:ui
-```
-
-Run tests in headed mode:
-
-```bash
-npm run test:headed
-```
 
 ## Using Components
 
@@ -149,7 +129,6 @@ Before submitting a pull request:
 * [GCDS Components](https://github.com/cds-snc/gcds-components)
 * [StencilJS](https://stenciljs.com/)
 * [Eleventy](https://www.11ty.dev/)
-* [Playwright](https://playwright.dev/)
 
 ## License
 
