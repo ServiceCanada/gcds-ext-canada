@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface GcdsExtMwsServices {
         /**
-          * Number of columns to distribute items across.
+          * Number of columns to distribute items across. Allowed values: 1, 2, 3.
           * @default 3
          */
         "columns": 1 | 2 | 3;
@@ -60,7 +60,7 @@ declare namespace LocalJSX {
 
     interface GcdsExtMwsServices {
         /**
-          * Number of columns to distribute items across.
+          * Number of columns to distribute items across. Allowed values: 1, 2, 3.
           * @default 3
          */
         "columns"?: 1 | 2 | 3;

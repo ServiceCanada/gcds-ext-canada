@@ -1,4 +1,4 @@
-import { Component, Prop, h, Element } from '@stencil/core';
+import { Component, Prop, h, Element, Watch } from '@stencil/core';
 
 /**
  * @slot heading - Custom heading content.
@@ -24,8 +24,23 @@ export class GcdsExtMwsServices {
 
   /**
    * Number of columns to distribute items across.
+   * Allowed values: 1, 2, 3.
    */
-  @Prop() columns: 1 | 2 | 3 = 3;
+  @Prop({ mutable: true }) columns: 1 | 2 | 3 = 3;
+
+  @Watch('columns')
+  validateColumns(newValue: number) {
+    if (![1, 2, 3].includes(Number(newValue))) {
+      console.warn(
+        `[gcds-ext-mws-services] Invalid value "${newValue}" provided for "columns". Falling back to 3.`,
+      );
+      this.columns = 3;
+    }
+  }
+
+  componentWillLoad() {
+    this.validateColumns(this.columns);
+  }
 
   private getGridColumns() {
     const mobile = '1fr';

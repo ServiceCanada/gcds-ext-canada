@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property               | Attribute      | Description                                   | Type                   | Default     |
-| ---------------------- | -------------- | --------------------------------------------- | ---------------------- | ----------- |
-| `columns`              | `columns`      | Number of columns to distribute items across. | `1 \| 2 \| 3`          | `3`         |
-| `heading` _(required)_ | `heading`      | Heading text (required)                       | `string`               | `undefined` |
-| `hideHeading`          | `hide-heading` | Hide the Heading visually.                    | `boolean \| undefined` | `false`     |
+| Property               | Attribute      | Description                                                            | Type                   | Default     |
+| ---------------------- | -------------- | ---------------------------------------------------------------------- | ---------------------- | ----------- |
+| `columns`              | `columns`      | Number of columns to distribute items across. Allowed values: 1, 2, 3. | `1 \| 2 \| 3`          | `3`         |
+| `heading` _(required)_ | `heading`      | Heading text (required)                                                | `string`               | `undefined` |
+| `hideHeading`          | `hide-heading` | Hide the Heading visually.                                             | `boolean \| undefined` | `false`     |
 
 
 ## Slots

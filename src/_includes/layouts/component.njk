@@ -25,7 +25,7 @@ layout: layouts/core.njk
   </thead>
   <tbody>
     {% for prop in component.props %}
-    <tr>
+    <tr lang="en">
       <td><code>{{ prop.attr }}</code></td>
       <td>{{ prop.docs }}</td>
       <td><code>{{ prop.type }}</code></td>
@@ -50,7 +50,7 @@ layout: layouts/core.njk
   </thead>
   <tbody>
     {% for event in component.events %}
-    <tr>
+    <tr lang="en">
       <td><code>{{ event.event }}</code></td>
       <td>{{ event.docs }}</td>
       <td><code>{{ event.complexType.original }}</code></td>
@@ -73,7 +73,7 @@ layout: layouts/core.njk
   </thead>
   <tbody>
     {% for slot in component.slots %}
-    <tr>
+    <tr lang="en">
       <td><code>{{ slot.name or "(default)" }}</code></td>
       <td>{{ slot.docs }}</td>
     </tr>

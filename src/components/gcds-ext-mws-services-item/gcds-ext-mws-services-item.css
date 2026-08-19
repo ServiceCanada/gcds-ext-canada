@@ -7,12 +7,24 @@
 }
 
 @layer default {
+  :host {
+    position: relative
+  }
+
   :host gcds-heading {
-    --gcds-heading-h3-desktop: var(--gcds-heading-h6-desktop);
+    --gcds-heading-h3-desktop: var(--gcds-heading-h6-mobile);
     --gcds-heading-h3-mobile: var(--gcds-heading-h6-mobile);
   }
 
   :host gcds-text {
     --gcds-text-size-body-desktop: var(--gcds-text-size-body-mobile);
+  }
+
+  :host gcds-link::part(link)::after {
+    inset: 0px;
+    content: "";
+    pointer-events: auto;
+    position: absolute;
+    z-index: 0;
   }
 }
