@@ -65,7 +65,7 @@ export class GcdsExtMwsServices {
     }
 
     return (
-      <gcds-heading tag="h2">
+      <gcds-heading tag="h2" margin-top="0">
         <slot name="heading">{this.heading}</slot>
       </gcds-heading>
     );
@@ -83,7 +83,7 @@ export class GcdsExtMwsServices {
           columns-tablet={tablet}
           columns-desktop={desktop}
         >
-          <slot></slot>
+          <slot />
         </gcds-grid>
       </div>
     );
