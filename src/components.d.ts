@@ -6,6 +6,23 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface GcdsExtMwsFeedback {
+        /**
+          * Defines the URL where the feedback should be submitted
+          * @default 'https://feedback-retroaction.canada.ca/api/QueueProblemForm'
+         */
+        "action"?: string;
+        /**
+          * Text defining the section where your page resides
+          * @default ''
+         */
+        "section"?: string;
+        /**
+          * Text defining the theme of your page
+          * @default ''
+         */
+        "theme"?: string;
+    }
     interface GcdsExtMwsServices {
         /**
           * Number of columns to distribute items across. Allowed values: 1, 2, 3.
@@ -37,7 +54,29 @@ export namespace Components {
         "href": string;
     }
 }
+export interface GcdsExtMwsFeedbackCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsExtMwsFeedbackElement;
+}
 declare global {
+    interface HTMLGcdsExtMwsFeedbackElementEventMap {
+        "feedbackNo": void;
+        "feedbackSubmit": void;
+    }
+    interface HTMLGcdsExtMwsFeedbackElement extends Components.GcdsExtMwsFeedback, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsExtMwsFeedbackElementEventMap>(type: K, listener: (this: HTMLGcdsExtMwsFeedbackElement, ev: GcdsExtMwsFeedbackCustomEvent<HTMLGcdsExtMwsFeedbackElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsExtMwsFeedbackElementEventMap>(type: K, listener: (this: HTMLGcdsExtMwsFeedbackElement, ev: GcdsExtMwsFeedbackCustomEvent<HTMLGcdsExtMwsFeedbackElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLGcdsExtMwsFeedbackElement: {
+        prototype: HTMLGcdsExtMwsFeedbackElement;
+        new (): HTMLGcdsExtMwsFeedbackElement;
+    };
     interface HTMLGcdsExtMwsServicesElement extends Components.GcdsExtMwsServices, HTMLStencilElement {
     }
     var HTMLGcdsExtMwsServicesElement: {
@@ -51,6 +90,7 @@ declare global {
         new (): HTMLGcdsExtMwsServicesItemElement;
     };
     interface HTMLElementTagNameMap {
+        "gcds-ext-mws-feedback": HTMLGcdsExtMwsFeedbackElement;
         "gcds-ext-mws-services": HTMLGcdsExtMwsServicesElement;
         "gcds-ext-mws-services-item": HTMLGcdsExtMwsServicesItemElement;
     }
@@ -58,6 +98,31 @@ declare global {
 declare namespace LocalJSX {
     type OneOf<K extends string, PropT, AttrT = PropT> = { [P in K]: PropT } & { [P in `attr:${K}` | `prop:${K}`]?: never } | { [P in `attr:${K}`]: AttrT } & { [P in K | `prop:${K}`]?: never } | { [P in `prop:${K}`]: PropT } & { [P in K | `attr:${K}`]?: never };
 
+    interface GcdsExtMwsFeedback {
+        /**
+          * Defines the URL where the feedback should be submitted
+          * @default 'https://feedback-retroaction.canada.ca/api/QueueProblemForm'
+         */
+        "action"?: string;
+        /**
+          * Triggered when the user select "No"
+         */
+        "onFeedbackNo"?: (event: GcdsExtMwsFeedbackCustomEvent<void>) => void;
+        /**
+          * Triggered when the user select "Yes" or submits a comment
+         */
+        "onFeedbackSubmit"?: (event: GcdsExtMwsFeedbackCustomEvent<void>) => void;
+        /**
+          * Text defining the section where your page resides
+          * @default ''
+         */
+        "section"?: string;
+        /**
+          * Text defining the theme of your page
+          * @default ''
+         */
+        "theme"?: string;
+    }
     interface GcdsExtMwsServices {
         /**
           * Number of columns to distribute items across. Allowed values: 1, 2, 3.
@@ -89,6 +154,11 @@ declare namespace LocalJSX {
         "href": string;
     }
 
+    interface GcdsExtMwsFeedbackAttributes {
+        "theme": string;
+        "section": string;
+        "action": string;
+    }
     interface GcdsExtMwsServicesAttributes {
         "heading": string;
         "hideHeading": boolean;
@@ -101,6 +171,7 @@ declare namespace LocalJSX {
     }
 
     interface IntrinsicElements {
+        "gcds-ext-mws-feedback": Omit<GcdsExtMwsFeedback, keyof GcdsExtMwsFeedbackAttributes> & { [K in keyof GcdsExtMwsFeedback & keyof GcdsExtMwsFeedbackAttributes]?: GcdsExtMwsFeedback[K] } & { [K in keyof GcdsExtMwsFeedback & keyof GcdsExtMwsFeedbackAttributes as `attr:${K}`]?: GcdsExtMwsFeedbackAttributes[K] } & { [K in keyof GcdsExtMwsFeedback & keyof GcdsExtMwsFeedbackAttributes as `prop:${K}`]?: GcdsExtMwsFeedback[K] };
         "gcds-ext-mws-services": Omit<GcdsExtMwsServices, keyof GcdsExtMwsServicesAttributes> & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes]?: GcdsExtMwsServices[K] } & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes as `attr:${K}`]?: GcdsExtMwsServicesAttributes[K] } & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes as `prop:${K}`]?: GcdsExtMwsServices[K] } & OneOf<"heading", GcdsExtMwsServices["heading"], GcdsExtMwsServicesAttributes["heading"]>;
         "gcds-ext-mws-services-item": Omit<GcdsExtMwsServicesItem, keyof GcdsExtMwsServicesItemAttributes> & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes]?: GcdsExtMwsServicesItem[K] } & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes as `attr:${K}`]?: GcdsExtMwsServicesItemAttributes[K] } & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes as `prop:${K}`]?: GcdsExtMwsServicesItem[K] } & OneOf<"href", GcdsExtMwsServicesItem["href"], GcdsExtMwsServicesItemAttributes["href"]>;
     }
@@ -109,6 +180,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "gcds-ext-mws-feedback": LocalJSX.IntrinsicElements["gcds-ext-mws-feedback"] & JSXBase.HTMLAttributes<HTMLGcdsExtMwsFeedbackElement>;
             "gcds-ext-mws-services": LocalJSX.IntrinsicElements["gcds-ext-mws-services"] & JSXBase.HTMLAttributes<HTMLGcdsExtMwsServicesElement>;
             "gcds-ext-mws-services-item": LocalJSX.IntrinsicElements["gcds-ext-mws-services-item"] & JSXBase.HTMLAttributes<HTMLGcdsExtMwsServicesItemElement>;
         }

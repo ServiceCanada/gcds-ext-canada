@@ -2,3 +2,10 @@
   Custom styles for Canada.ca MWS GCDS extension documentation
 **********/
 
+code:not([class*=language-]) {
+    font-size: 80%;
+    line-height: var(--gcds-line-heights-text-small);
+    padding: var(--gcds-spacing-25);
+    background-color: var(--gcds-color-grayscale-50);
+    border-radius: var(--gcds-border-radius-sm);
+}
