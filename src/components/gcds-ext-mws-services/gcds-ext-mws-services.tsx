@@ -13,7 +13,7 @@ export class GcdsExtMwsServices {
   @Element() host!: HTMLElement;
 
   /**
-   * Heading text (required)
+   * Mandatory - Heading text
    */
   @Prop() heading!: string;
 

@@ -13,12 +13,12 @@ export namespace Components {
          */
         "action"?: string;
         /**
-          * Text defining the section where your page resides
+          * Defines the section where your page resides (sent as data via the form submission)
           * @default ''
          */
         "section"?: string;
         /**
-          * Text defining the theme of your page
+          * Defines the theme of your page (sent as data via the form submission)
           * @default ''
          */
         "theme"?: string;
@@ -30,7 +30,7 @@ export namespace Components {
          */
         "columns": 1 | 2 | 3;
         /**
-          * Heading text (required)
+          * Mandatory - Heading text
          */
         "heading": string;
         /**
@@ -113,12 +113,12 @@ declare namespace LocalJSX {
          */
         "onFeedbackSubmit"?: (event: GcdsExtMwsFeedbackCustomEvent<void>) => void;
         /**
-          * Text defining the section where your page resides
+          * Defines the section where your page resides (sent as data via the form submission)
           * @default ''
          */
         "section"?: string;
         /**
-          * Text defining the theme of your page
+          * Defines the theme of your page (sent as data via the form submission)
           * @default ''
          */
         "theme"?: string;
@@ -130,7 +130,7 @@ declare namespace LocalJSX {
          */
         "columns"?: 1 | 2 | 3;
         /**
-          * Heading text (required)
+          * Mandatory - Heading text
          */
         "heading": string;
         /**

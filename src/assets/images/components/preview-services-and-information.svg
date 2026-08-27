@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 400 300">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #a6a6a6;
+      }
+
+      .cls-3 {
+        fill: #1f497a;
+        opacity: .6;
+      }
+
+      .cls-4 {
+        fill: #f1f2f3;
+      }
+
+      .cls-2 {
+        opacity: .35;
+      }
+    </style>
+  </defs>
+  <!-- Generator: Adobe Illustrator 28.6.0, SVG Export Plug-In . SVG Version: 1.2.0 Build 709)  -->
+  <g>
+    <g id="Layer_1">
+      <rect class="cls-4" y="0" width="400" height="300"/>
+      <g>
+        <rect class="cls-1" x="25" y="38.93" width="207.72" height="24" rx="12" ry="12"/>
+        <g>
+          <rect class="cls-2" x="25" y="120.01" width="100" height="16" rx="8" ry="8"/>
+          <rect class="cls-3" x="25" y="93.12" width="89.11" height="16" rx="8" ry="8"/>
+          <rect class="cls-2" x="25" y="145.54" width="85.68" height="16" rx="8" ry="8"/>
+        </g>
+        <g>
+          <rect class="cls-2" x="275" y="120.01" width="100" height="16" rx="8" ry="8"/>
+          <rect class="cls-3" x="275" y="93.12" width="89.11" height="16" rx="8" ry="8"/>
+          <rect class="cls-2" x="275" y="145.54" width="85.68" height="16" rx="8" ry="8"/>
+        </g>
+        <g>
+          <rect class="cls-2" x="150" y="120.01" width="100" height="16" rx="8" ry="8"/>
+          <rect class="cls-3" x="150" y="93.12" width="89.11" height="16" rx="8" ry="8"/>
+          <rect class="cls-2" x="150" y="145.54" width="85.68" height="16" rx="8" ry="8"/>
+        </g>
+        <g>
+          <rect class="cls-2" x="25" y="219.54" width="100" height="16" rx="8" ry="8"/>
+          <rect class="cls-3" x="25" y="192.65" width="89.11" height="16" rx="8" ry="8"/>
+          <rect class="cls-2" x="25" y="245.07" width="85.68" height="16" rx="8" ry="8"/>
+        </g>
+        <g>
+          <rect class="cls-2" x="275" y="219.54" width="100" height="16" rx="8" ry="8"/>
+          <rect class="cls-3" x="275" y="192.65" width="89.11" height="16" rx="8" ry="8"/>
+          <rect class="cls-2" x="275" y="245.07" width="85.68" height="16" rx="8" ry="8"/>
+        </g>
+        <g>
+          <rect class="cls-2" x="150" y="219.54" width="100" height="16" rx="8" ry="8"/>
+          <rect class="cls-3" x="150" y="192.65" width="89.11" height="16" rx="8" ry="8"/>
+          <rect class="cls-2" x="150" y="245.07" width="85.68" height="16" rx="8" ry="8"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

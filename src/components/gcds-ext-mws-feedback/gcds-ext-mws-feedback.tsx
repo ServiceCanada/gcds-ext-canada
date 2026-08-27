@@ -23,12 +23,12 @@ export class GcdsExtMwsFeedback {
    */
 
   /**
-   * Text defining the theme of your page
+   * Defines the theme of your page (sent as data via the form submission)
    */
   @Prop() theme?: string = '';
 
   /**
-   * Text defining the section where your page resides
+   * Defines the section where your page resides (sent as data via the form submission)
    */
   @Prop() section?: string = '';
 

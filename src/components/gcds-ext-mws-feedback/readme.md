@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property  | Attribute | Description                                            | Type     | Default                                                         |
-| --------- | --------- | ------------------------------------------------------ | -------- | --------------------------------------------------------------- |
-| `action`  | `action`  | Defines the URL where the feedback should be submitted | `string` | `'https://feedback-retroaction.canada.ca/api/QueueProblemForm'` |
-| `section` | `section` | Text defining the section where your page resides      | `string` | `''`                                                            |
-| `theme`   | `theme`   | Text defining the theme of your page                   | `string` | `''`                                                            |
+| Property  | Attribute | Description                                                                        | Type     | Default                                                         |
+| --------- | --------- | ---------------------------------------------------------------------------------- | -------- | --------------------------------------------------------------- |
+| `action`  | `action`  | Defines the URL where the feedback should be submitted                             | `string` | `'https://feedback-retroaction.canada.ca/api/QueueProblemForm'` |
+| `section` | `section` | Defines the section where your page resides (sent as data via the form submission) | `string` | `''`                                                            |
+| `theme`   | `theme`   | Defines the theme of your page (sent as data via the form submission)              | `string` | `''`                                                            |
 
 
 ## Events

@@ -4,9 +4,13 @@
     "fr": "Rétroaction"
   },
   "tag": "gcds-ext-mws-feedback",
+  "image": {
+    "en": "preview-feedback.svg",
+    "fr": "preview-feedback.svg"
+  },
   "description": {
-    "en": "The feedback tool is an optional pattern to collect feedback on the page experience. When in use, it is included at the bottom of the page before the date modified.",
-    "fr": "L'outil de rétroaction est une configuration facultative pour recueillir la rétroaction de l'expérience sur une page. Lorsqu'il est utilisé, il apparaît en bas de la page, juste avant la date de modification."
+    "en": "Collects feedback on the page experience.",
+    "fr": "Recueille la rétroaction de l'expérience sur une page."
   },
   "status": "stable",
   "docsPath": {

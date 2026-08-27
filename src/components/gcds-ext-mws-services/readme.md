@@ -10,7 +10,7 @@
 | Property               | Attribute      | Description                                                            | Type          | Default     |
 | ---------------------- | -------------- | ---------------------------------------------------------------------- | ------------- | ----------- |
 | `columns`              | `columns`      | Number of columns to distribute items across. Allowed values: 1, 2, 3. | `1 \| 2 \| 3` | `3`         |
-| `heading` _(required)_ | `heading`      | Heading text (required)                                                | `string`      | `undefined` |
+| `heading` _(required)_ | `heading`      | Mandatory - Heading text                                               | `string`      | `undefined` |
 | `hideHeading`          | `hide-heading` | Hide the Heading visually.                                             | `boolean`     | `false`     |
 
 
