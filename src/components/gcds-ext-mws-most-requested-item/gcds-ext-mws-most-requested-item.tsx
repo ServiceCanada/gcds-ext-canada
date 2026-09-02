@@ -1,4 +1,4 @@
-import { Component, Prop, h, Element } from '@stencil/core';
+import { Component, Prop, h, Element, State } from '@stencil/core';
 
 /**
  * @slot - Link text. Overrides the text property.
@@ -23,14 +23,29 @@ export class GcdsExtMwsMostRequestedItem {
    */
   @Prop() text?: string;
 
-  private hasDefaultSlot(): boolean {
-    return !!this.host.textContent?.trim();
+  @State() hasDefaultSlot = false;
+
+  componentWillLoad() {
+    this.updateDefaultSlotState();
+  }
+
+  private updateDefaultSlotState = () => {
+    this.hasDefaultSlot = Array.from(this.host.childNodes).some((node) => this.isMeaningfulSlotContent(node));
+  }
+
+  private isMeaningfulSlotContent(node: ChildNode): boolean {
+    if (node.nodeType === 3 || node.nodeType === 4) {
+      return !!node.nodeValue?.trim();
+    }
+
+    return node.nodeType === 1;
   }
 
   render() {
     return (
       <a href={this.href}>
-        {this.hasDefaultSlot() ? <slot /> : this.text}
+        <slot onSlotchange={this.updateDefaultSlotState}></slot>
+        {!this.hasDefaultSlot ? this.text : undefined}
       </a>
     );
   }

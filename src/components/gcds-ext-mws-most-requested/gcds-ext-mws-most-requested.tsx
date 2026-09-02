@@ -2,9 +2,8 @@ import { Component, Prop, h, Element, State } from '@stencil/core';
 
 type MostRequestedFrame = 'nav' | 'home';
 
-type MostRequestedLink = {
-  href: string;
-  text: string;
+type MostRequestedItem = {
+  slotName: string;
 };
 
 /**
@@ -30,17 +29,19 @@ export class GcdsExtMwsMostRequested {
   @Prop() hideHeading?: boolean = false;
 
   @State() resolvedFrame: MostRequestedFrame = 'nav';
-  @State() links: MostRequestedLink[] = [];
+  @State() items: MostRequestedItem[] = [];
   @State() itemCount = 0;
   @State() hasStackedSibling = false;
   @State() isMisnested = false;
 
   private childObserver?: MutationObserver;
   private siblingObserver?: MutationObserver;
+  private itemSlotNames = new WeakMap<HTMLElement, string>();
+  private nextSlotId = 0;
 
   componentWillLoad() {
     this.updateResolvedFrame();
-    this.updateLinks();
+    this.updateItems();
     this.updateAuthoringState();
   }
 
@@ -79,7 +80,7 @@ export class GcdsExtMwsMostRequested {
       return;
     }
 
-    this.childObserver = new MutationObserver(() => this.updateLinks());
+    this.childObserver = new MutationObserver(() => this.updateItems());
     this.childObserver.observe(this.host, {
       attributes: true,
       attributeFilter: ['href', 'text'],
@@ -118,34 +119,44 @@ export class GcdsExtMwsMostRequested {
     return !!this.host.closest('.container:not(.responsivegrid)');
   }
 
-  private updateLinks() {
-    const links = Array.from(
+  private updateItems() {
+    const items = Array.from(
       this.host.querySelectorAll('gcds-ext-mws-most-requested-item'),
     )
-      .map((item) => this.getItemLink(item as HTMLElement))
-      .filter((link): link is MostRequestedLink => !!link);
+      .map((item) => this.getItem(item as HTMLElement))
+      .filter((item): item is MostRequestedItem => !!item);
 
-    this.links = links;
-    this.itemCount = links.length;
+    this.items = items;
+    this.itemCount = items.length;
     this.host.setAttribute('data-gcds-item-count', String(this.itemCount));
   }
 
-  private getItemLink(item: HTMLElement): MostRequestedLink | undefined {
+  private getItem(item: HTMLElement): MostRequestedItem | undefined {
     const href = this.getItemValue(item, 'href');
 
-    if (!href) {
+    if (!href || !this.hasItemContent(item)) {
       return undefined;
     }
 
-    const slottedText = item.textContent?.trim();
+    const slotName = this.getItemSlotName(item);
+    this.assignItemSlot(item, slotName);
+
+    return { slotName };
+  }
+
+  private hasItemContent(item: HTMLElement): boolean {
+    const hasSlottedContent = Array.from(item.childNodes).some((node) => this.isMeaningfulItemContent(node));
     const fallbackText = this.getItemValue(item, 'text');
-    const text = slottedText || fallbackText;
 
-    if (!text) {
-      return undefined;
+    return hasSlottedContent || !!fallbackText;
+  }
+
+  private isMeaningfulItemContent(node: ChildNode): boolean {
+    if (node.nodeType === 3 || node.nodeType === 4) {
+      return !!node.nodeValue?.trim();
     }
 
-    return { href, text };
+    return node.nodeType === 1;
   }
 
   private getItemValue(item: HTMLElement, name: 'href' | 'text'): string | undefined {
@@ -158,6 +169,26 @@ export class GcdsExtMwsMostRequested {
     const attributeValue = item.getAttribute(name)?.trim();
 
     return attributeValue || undefined;
+  }
+
+  private getItemSlotName(item: HTMLElement): string {
+    const existingSlotName = this.itemSlotNames.get(item);
+
+    if (existingSlotName) {
+      return existingSlotName;
+    }
+
+    const slotName = `most-requested-item-${this.nextSlotId}`;
+    this.nextSlotId += 1;
+    this.itemSlotNames.set(item, slotName);
+
+    return slotName;
+  }
+
+  private assignItemSlot(item: HTMLElement, slotName: string) {
+    if (item.getAttribute('slot') !== slotName) {
+      item.setAttribute('slot', slotName);
+    }
   }
 
   private renderHeading() {
@@ -181,9 +212,9 @@ export class GcdsExtMwsMostRequested {
         <div class="container">
           {this.renderHeading()}
           <ul class={listClasses}>
-            {this.links.map((link) => (
-              <li>
-                <a href={link.href}>{link.text}</a>
+            {this.items.map((item) => (
+              <li key={item.slotName}>
+                <slot name={item.slotName}></slot>
               </li>
             ))}
           </ul>
