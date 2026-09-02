@@ -1,0 +1,87 @@
+---
+layout: layouts/component.njk
+title: Most requested
+lang: en
+component: gcds-ext-mws-most-requested
+permalink: /en/components/most-requested/index.html
+fullWidth: true
+---
+
+<div class="container">
+    <h1>Most requested</h1>
+    <p>The <code>&lt;gcds-ext-mws-most-requested&gt;</code> component presents a short list of high-demand links. The non-home navigation frame is the default and the fallback whenever the page context cannot be confirmed as the Canada.ca home page.</p>
+
+    <h2>Default navigation frame</h2>
+</div>
+<gcds-ext-mws-most-requested heading="Most requested">
+    <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink with a very long task name that spans over two lines 1]</gcds-ext-mws-most-requested-item>
+    <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 2]</gcds-ext-mws-most-requested-item>
+    <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 3]</gcds-ext-mws-most-requested-item>
+    <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 4]</gcds-ext-mws-most-requested-item>
+    <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 5]</gcds-ext-mws-most-requested-item>
+    <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink with a very long task name that spans over two lines 6]</gcds-ext-mws-most-requested-item>
+</gcds-ext-mws-most-requested>
+<div class="container">
+    {% highlight "html" %}
+    <gcds-ext-mws-most-requested heading="Most requested">
+        <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink with a very long task name that spans over two lines 1]</gcds-ext-mws-most-requested-item>
+        <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 2]</gcds-ext-mws-most-requested-item>
+        <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 3]</gcds-ext-mws-most-requested-item>
+        <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 4]</gcds-ext-mws-most-requested-item>
+        <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 5]</gcds-ext-mws-most-requested-item>
+        <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink with a very long task name that spans over two lines 6]</gcds-ext-mws-most-requested-item>
+    </gcds-ext-mws-most-requested>
+    {% endhighlight %}
+
+    <h2>Exactly two items</h2>
+</div>
+<gcds-ext-mws-most-requested heading="Most requested">
+    <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 1]</gcds-ext-mws-most-requested-item>
+    <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 2]</gcds-ext-mws-most-requested-item>
+</gcds-ext-mws-most-requested>
+<div class="container">
+    {% highlight "html" %}
+    <gcds-ext-mws-most-requested heading="Most requested">
+        <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 1]</gcds-ext-mws-most-requested-item>
+        <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 2]</gcds-ext-mws-most-requested-item>
+    </gcds-ext-mws-most-requested>
+    {% endhighlight %}
+
+    <h2>Hidden heading</h2>
+</div>
+<gcds-ext-mws-most-requested heading="Most requested" hide-heading>
+    <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 1]</gcds-ext-mws-most-requested-item>
+    <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 2]</gcds-ext-mws-most-requested-item>
+    <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 3]</gcds-ext-mws-most-requested-item>
+</gcds-ext-mws-most-requested>
+<div class="container">
+    {% highlight "html" %}
+    <gcds-ext-mws-most-requested heading="Most requested" hide-heading>
+        <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 1]</gcds-ext-mws-most-requested-item>
+        <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 2]</gcds-ext-mws-most-requested-item>
+        <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 3]</gcds-ext-mws-most-requested-item>
+    </gcds-ext-mws-most-requested>
+    {% endhighlight %}
+
+    <h2>Canada.ca home page frame</h2>
+    <p>The home frame is exclusive to the Canada.ca home page and is not author-selectable. This documentation page demonstrates it in an iframe so the iframe document, not the component markup, carries the required home page body classes.</p>
+    <iframe title="Most requested on the Canada.ca home page" style="border: 0; display: block; inline-size: 100%; min-block-size: 24rem;" srcdoc='&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/components@1.3.1/dist/gcds/gcds.css"&gt;&lt;script type="module" src="/build/gcds-ext-mws.esm.js"&gt;&lt;/script&gt;&lt;/head&gt;&lt;body class="home page-type-nav"&gt;&lt;gcds-ext-mws-most-requested heading="Most requested"&gt;&lt;gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/government/sign-in-online-account.html"&gt;Login to an account&lt;/gcds-ext-mws-most-requested-item&gt;&lt;gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/services/benefits/ei.html"&gt;Employment Insurance and leave&lt;/gcds-ext-mws-most-requested-item&gt;&lt;gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/services/benefits/publicpensions.html"&gt;Public pensions (CPP and OAS)&lt;/gcds-ext-mws-most-requested-item&gt;&lt;gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports.html"&gt;Get a passport&lt;/gcds-ext-mws-most-requested-item&gt;&lt;gcds-ext-mws-most-requested-item href="https://weather.gc.ca/canada_e.html"&gt;Weather&lt;/gcds-ext-mws-most-requested-item&gt;&lt;gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/government/grants-funding.html"&gt;Grants and funding&lt;/gcds-ext-mws-most-requested-item&gt;&lt;gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/government/change-address.html"&gt;Change your address&lt;/gcds-ext-mws-most-requested-item&gt;&lt;gcds-ext-mws-most-requested-item href="http://www.healthycanadians.gc.ca/recall-alert-rappel-avis/index-eng.php"&gt;Product recalls and alerts&lt;/gcds-ext-mws-most-requested-item&gt;&lt;/gcds-ext-mws-most-requested&gt;&lt;/body&gt;&lt;/html&gt;'></iframe>
+    {% highlight "html" %}
+    <iframe title="Most requested on the Canada.ca home page" style="border: 0; display: block; inline-size: 100%; min-block-size: 24rem;" srcdoc='
+      &lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;
+      &lt;link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/components@1.3.1/dist/gcds/gcds.css"&gt;
+      &lt;script type="module" src="/build/gcds-ext-mws.esm.js"&gt;&lt;/script&gt;
+      &lt;/head&gt;&lt;body class="home page-type-nav"&gt;
+      &lt;gcds-ext-mws-most-requested heading="Most requested"&gt;
+        &lt;gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/government/sign-in-online-account.html"&gt;Login to an account&lt;/gcds-ext-mws-most-requested-item&gt;
+        &lt;gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/services/benefits/ei.html"&gt;Employment Insurance and leave&lt;/gcds-ext-mws-most-requested-item&gt;
+        &lt;gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/services/benefits/publicpensions.html"&gt;Public pensions (CPP and OAS)&lt;/gcds-ext-mws-most-requested-item&gt;
+        &lt;gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports.html"&gt;Get a passport&lt;/gcds-ext-mws-most-requested-item&gt;
+        &lt;gcds-ext-mws-most-requested-item href="https://weather.gc.ca/canada_e.html"&gt;Weather&lt;/gcds-ext-mws-most-requested-item&gt;
+        &lt;gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/government/grants-funding.html"&gt;Grants and funding&lt;/gcds-ext-mws-most-requested-item&gt;
+        &lt;gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/government/change-address.html"&gt;Change your address&lt;/gcds-ext-mws-most-requested-item&gt;
+        &lt;gcds-ext-mws-most-requested-item href="http://www.healthycanadians.gc.ca/recall-alert-rappel-avis/index-eng.php"&gt;Product recalls and alerts&lt;/gcds-ext-mws-most-requested-item&gt;
+      &lt;/gcds-ext-mws-most-requested&gt;
+      &lt;/body&gt;&lt;/html&gt;'></iframe>
+    {% endhighlight %}
+</div>

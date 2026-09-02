@@ -1,0 +1,14 @@
+@layer reset, default;
+
+@layer reset {
+  :host {
+    display: block;
+  }
+}
+
+@layer default {
+  a {
+    color: var(--gcds-link-default);
+    font: inherit;
+  }
+}
