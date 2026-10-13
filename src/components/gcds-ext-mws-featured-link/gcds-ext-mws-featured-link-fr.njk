@@ -1,0 +1,41 @@
+---
+layout: layouts/component.njk
+title: Lien en vedette
+lang: fr
+component: gcds-ext-mws-featured-link
+altPage: /en/components/featured-link/index.html
+permalink: /fr/composants/lien-en-vedette/index.html
+dateModified: "2026-08-25"
+fullWidth: true
+---
+
+<gcds-container layout="page">
+    <h1>Lien en vedette</h1>
+    <p>Le composant <code>&lt;gcds-ext-mws-featured-link&gt;</code> est un hyperlien court et descriptif que votre institution doit mettre en évidence sur une page d’accueil.</p>
+
+    <h2>Par défaut</h2>
+</gcds-container>
+
+<gcds-ext-mws-featured-link link-text="[Titre de la promotion]" href="https://google.ca"></gcds-ext-mws-featured-link>
+
+<gcds-container layout="page">
+    {% highlight "html" %}
+    <gcds-ext-mws-featured-link link-text="[Titre de la promotion]" href="https://google.ca"></gcds-ext-mws-featured-link>
+    {% endhighlight %}
+
+    <h2>En utilisant les emplacements</h2>
+</gcds-container>
+
+<gcds-ext-mws-featured-link bg-color="#cccccc">
+    <a href="google.com" slot="link">[Titre de la promotion<sup>2</sup>]</a>
+    <p slot="description">Ma description avec un <strong>texte</strong> long.</p>
+</gcds-ext-mws-featured-link>
+
+<gcds-container layout="page">
+    {% highlight "html" %}
+<gcds-ext-mws-featured-link bg-color="#cccccc">
+    <a href="google.com" slot="link">[Titre de la promotion<sup>2</sup>]</a>
+    <p slot="description">Ma description avec un <strong>texte</strong> long.</p>
+</gcds-ext-mws-featured-link>
+    {% endhighlight %}
+</gcds-container>

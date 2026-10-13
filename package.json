@@ -28,6 +28,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+    "@gcds-core/tokens": "^1.6.0",
     "@stencil/core": "^4.43.5",
     "concurrently": "^10.0.4",
     "http-server": "^14.1.1",

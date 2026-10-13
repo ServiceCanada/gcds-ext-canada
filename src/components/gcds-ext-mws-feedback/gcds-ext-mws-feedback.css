@@ -1,4 +1,4 @@
-@layer reset, default;
+@layer reset, default, mobile;
 
 @layer reset {
   :host {
