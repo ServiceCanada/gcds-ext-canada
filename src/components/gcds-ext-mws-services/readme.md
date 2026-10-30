@@ -22,6 +22,24 @@
 | `"heading"` | Custom heading content.            |
 
 
+## Dependencies
+
+### Depends on
+
+- gcds-sr-only
+- gcds-heading
+- gcds-grid
+
+### Graph
+```mermaid
+graph TD;
+  gcds-ext-mws-services --> gcds-sr-only
+  gcds-ext-mws-services --> gcds-heading
+  gcds-ext-mws-services --> gcds-grid
+  gcds-grid --> gcds-container
+  style gcds-ext-mws-services fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

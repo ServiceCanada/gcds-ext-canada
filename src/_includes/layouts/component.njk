@@ -25,12 +25,14 @@ layout: layouts/core.njk
   </thead>
   <tbody>
     {% for prop in component.props %}
+    {% if prop.attr %}
     <tr lang="en">
-      <td><code>{{ prop.attr }}</code></td>
+      <th>{{ prop.attr }} {% if prop.required %}<span class="text-secondary font-regular">({{ i18n.componentPropsRequired }})</span>{% endif %}</th>
       <td>{{ prop.docs }}</td>
       <td><code>{{ prop.type }}</code></td>
       <td><code>{{ prop.default }}</code></td>
     </tr>
+    {% endif %}
     {% endfor %}
   </tbody>
 </table>
@@ -50,11 +52,13 @@ layout: layouts/core.njk
   </thead>
   <tbody>
     {% for event in component.events %}
+    {% if event.event %}
     <tr lang="en">
-      <td><code>{{ event.event }}</code></td>
+      <th>{{ event.event }}</th>
       <td>{{ event.docs }}</td>
       <td><code>{{ event.complexType.original }}</code></td>
     </tr>
+    {% endif %}
     {% endfor %}
   </tbody>
 </table>
@@ -74,7 +78,7 @@ layout: layouts/core.njk
   <tbody>
     {% for slot in component.slots %}
     <tr lang="en">
-      <td><code>{{ slot.name or "(default)" }}</code></td>
+      <th>{{ slot.name or "(default)" }}</th>
       <td>{{ slot.docs }}</td>
     </tr>
     {% endfor %}

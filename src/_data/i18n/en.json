@@ -14,7 +14,8 @@
   "componentPropsSlot": "Slot",
   "componentPropsNoProperties": "No properties available for this component.",
   "componentPropsNoEvents": "No events available for this component.",
-  "componentPropsNoSlots": "No slots available for this component."
+  "componentPropsNoSlots": "No slots available for this component.",
+  "componentPropsRequired" : "required"
 }
 
 

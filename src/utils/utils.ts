@@ -1,4 +1,11 @@
 import { EventEmitter } from '@stencil/core';
+import '@gcds-core/components';
+import { ValidatorReturn } from '../validators';
+import { validationErrors } from './i18n/validation-errors';
+
+export function format(label: string): string {
+  return label ? ` ${label}` : 'Fallback Button Label';
+}
 
 export const inheritAttributes = (
   el: HTMLElement,
@@ -71,6 +78,20 @@ export const observerConfig = {
   attributes: true,
   attributeOldValue: true,
   attributeFilter: ['lang'],
+};
+
+// For validation - check if element has a checked checkbox/radio sibling
+export const elementGroupCheck = name => {
+  let hasCheck = false;
+  const element = document.querySelectorAll<HTMLFormElement>(
+    `input[name=${name}]`,
+  );
+  for (let i = 0; i < element.length; i++) {
+    if (element[i].checked) {
+      hasCheck = true;
+    }
+  }
+  return !hasCheck;
 };
 
 // Emit event with logic to cancel HTML events
@@ -159,6 +180,182 @@ export const isValid = (errors: string[], requiredProps: string[]) => {
 
   return intersection.length > 0 ? false : true;
 };
+
+/* Check for valid date
+ * @param dateString - the date to check
+ */
+export const isValidDate = (
+  dateString: string,
+  forceFormat?: 'full' | 'compact',
+) => {
+  // Define regex pattern to match YYYY-MM-DD format
+  const fullregex = /^\d{4}-\d{2}-\d{2}$/;
+  const compactregex = /^\d{4}-\d{2}$/;
+  let format = '';
+
+  // Check if the format matches the regex
+  if (fullregex.test(dateString)) {
+    format = 'full';
+  } else if (compactregex.test(dateString)) {
+    format = 'compact';
+  } else {
+    return false;
+  }
+
+  if (forceFormat && format != forceFormat) {
+    return false;
+  }
+
+  // Parse the date string into a Date object
+  const formattedDate = `${dateString}${format === 'compact' ? '-15' : ''}`;
+
+  return isValidDay(formattedDate);
+};
+
+export function isValidDay(date) {
+  const [year, month, day] = date.split('-').map(Number);
+
+  const thirtyOneDays = [1, 3, 5, 7, 8, 10, 12];
+  const thirtyDays = [4, 6, 9, 11];
+
+  if (month < 1 || month > 12) {
+    return false;
+  } else if (thirtyDays.includes(month) && (day < 1 || day > 30)) {
+    return false;
+  } else if (thirtyOneDays.includes(month) && (day < 1 || day > 31)) {
+    return false;
+  } else if (!isLeapYear(year) && month === 2 && (day < 1 || day > 28)) {
+    return false;
+  } else if (isLeapYear(year) && month === 2 && (day < 1 || day > 29)) {
+    return false;
+  }
+
+  return true;
+}
+
+function isLeapYear(y: number) {
+  return !(y & 3 || (!(y % 25) && y & 15));
+}
+
+/* Handle the returned validation result by assigning properties and emitting events
+ * @param element - the gcds form element that is being validated
+ * @param validationResult - the object returned from the validator
+ * @param label - the label of the form element
+ * @param errorEv - the gcdsError event emitter
+ * @param validEv - the gcdsValid event emitter
+ * @param lang - the current language
+ * @param errors - default errors object to pass back for more complicated validation scenarios
+ */
+export function handleValidationResult(
+  element:
+    | HTMLGcdsInputElement
+    | HTMLGcdsDateInputElement
+    | HTMLGcdsRadiosElement
+    | HTMLGcdsCheckboxesElement
+    | HTMLGcdsFileUploaderElement
+    | HTMLGcdsSelectElement
+    | HTMLGcdsTextareaElement,
+  validationResult: ValidatorReturn,
+  label: string,
+  errorEv: EventEmitter,
+  validEv: EventEmitter,
+  lang: string,
+  errors?: object,
+) {
+  if (!validationResult.valid) {
+    element.errorMessage = validationResult.reason[lang];
+    errorEv.emit({
+      message: `${label} - ${validationResult.reason[lang]}`,
+    });
+
+    if (validationResult.errors) {
+      return validationResult.errors;
+    }
+  } else {
+    element.errorMessage = '';
+    validEv.emit();
+  }
+
+  return errors;
+}
+
+/**
+ * Format HTML error message based off assigned attributes
+ * This lets us assign custom error messages
+ *
+ * @param error - the HTML validation error type
+ * @param lang - the current language
+ * @param el - the gcds form element that is being validated
+ */
+export function formatHTMLErrorMessage(error, lang, el) {
+  switch (error) {
+    case 'valueMissing':
+      return validationErrors[lang][error];
+    case 'typeMismatch':
+      if (el.type === 'url' || el.type === 'email') {
+        return validationErrors[lang][error][el.type];
+      } else {
+        return validationErrors[lang][error];
+      }
+    case 'tooLong':
+      return validationErrors[lang][error]
+        .replace('{max}', el.maxlength || el.characterCount)
+        .replace('{current}', el.value.length);
+    case 'tooShort':
+      return validationErrors[lang][error]
+        .replace('{min}', el.minlength)
+        .replace('{current}', el.value.length);
+    case 'rangeUnderflow':
+      return validationErrors[lang][error].replace('{min}', el.min);
+    case 'rangeOverflow':
+      return validationErrors[lang][error].replace('{max}', el.max);
+    case 'stepMismatch':
+      const value = Number(el.value);
+      const step = el.step === 'any' ? 0 : Number(el.step || 1);
+      const base = el.min !== undefined && el.min !== null ? Number(el.min) : 0;
+      const offset = (value - base) / step;
+
+      const lower = base + Math.floor(offset) * step;
+      const upper = base + Math.ceil(offset) * step;
+
+      return validationErrors[lang][error]
+        .replace('{lower}', lower)
+        .replace('{upper}', upper);
+    case 'badInput':
+    case 'patternMismatch':
+    default:
+      return validationErrors[lang][error];
+  }
+}
+
+/**
+ * Compare validity of radio buttons/checkboxes in a group
+ * @param elements - array of HTMLInputElements in the group
+ * @returns validity state object
+ */
+export function validateRadioCheckboxGroup(
+  elements: HTMLInputElement[],
+): ValidityState {
+  if (elements && elements.length > 0) {
+    const oneValid = elements.some(r => r.validity?.valid);
+
+    const validity: ValidityState = {
+      valueMissing: !oneValid,
+      typeMismatch: false,
+      patternMismatch: false,
+      tooLong: false,
+      tooShort: false,
+      rangeUnderflow: false,
+      rangeOverflow: false,
+      stepMismatch: false,
+      badInput: false,
+      customError: false,
+      valid: oneValid,
+    };
+
+    return validity;
+  }
+}
 
 /*
  * Personal information patterns

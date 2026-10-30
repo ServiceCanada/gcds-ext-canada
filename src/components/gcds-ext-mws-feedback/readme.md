@@ -29,6 +29,34 @@
 |      | The main content of the container. |
 
 
+## Dependencies
+
+### Depends on
+
+- gcds-text
+- gcds-icon
+- gcds-textarea
+- gcds-button
+
+### Graph
+```mermaid
+graph TD;
+  gcds-ext-mws-feedback --> gcds-text
+  gcds-ext-mws-feedback --> gcds-icon
+  gcds-ext-mws-feedback --> gcds-textarea
+  gcds-ext-mws-feedback --> gcds-button
+  gcds-textarea --> gcds-label
+  gcds-textarea --> gcds-hint
+  gcds-textarea --> gcds-error-message
+  gcds-textarea --> gcds-sr-only
+  gcds-textarea --> gcds-text
+  gcds-hint --> gcds-text
+  gcds-error-message --> gcds-text
+  gcds-error-message --> gcds-icon
+  gcds-button --> gcds-icon
+  style gcds-ext-mws-feedback fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
