@@ -23,6 +23,24 @@
 | `"link"`        | An `<a href="url" slot="link">text</a>` used to build the featured gcds-link. Accepts HTML content. Required if the `href` and `link-text` props are not set.  |
 
 
+## Dependencies
+
+### Depends on
+
+- gcds-container
+- gcds-link
+- gcds-text
+
+### Graph
+```mermaid
+graph TD;
+  gcds-ext-mws-featured-link --> gcds-container
+  gcds-ext-mws-featured-link --> gcds-link
+  gcds-ext-mws-featured-link --> gcds-text
+  gcds-link --> gcds-icon
+  style gcds-ext-mws-featured-link fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

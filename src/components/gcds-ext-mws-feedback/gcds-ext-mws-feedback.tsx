@@ -189,10 +189,11 @@ export class GcdsExtMwsFeedback {
               {this.isOpen ? (
                 <Fragment>
                   <gcds-textarea
-                    label={i18n[this.lang].moreDetails}
+                    prop:label={i18n[this.lang].moreDetails}
                     hint={i18n[this.lang].hint}
-                    name="details"
-                    maxlength="300"
+                    prop:name="details"
+                    prop:textareaId="details"
+                    maxlength={300}
                     lang={this.lang}
                     autofocus
                     validate-on="other"
