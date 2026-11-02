@@ -6,6 +6,24 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface GcdsExtMwsFeaturedLink {
+        /**
+          * Background color for the featured link section, as a hex value (e.g. "#FF0000").
+         */
+        "bgColor"?: string;
+        /**
+          * Description shown under the link. Optional, and takes priority over the `description` slot if both are provided.
+         */
+        "description"?: string;
+        /**
+          * URL for the featured link. Mandatory if the `link` slot is not used.
+         */
+        "href"?: string;
+        /**
+          * Text for the featured link. Mandatory if the `link` slot is not used.
+         */
+        "linkText"?: string;
+    }
     interface GcdsExtMwsServices {
         /**
           * Number of columns to distribute items across. Allowed values: 1, 2, 3.
@@ -38,6 +56,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLGcdsExtMwsFeaturedLinkElement extends Components.GcdsExtMwsFeaturedLink, HTMLStencilElement {
+    }
+    var HTMLGcdsExtMwsFeaturedLinkElement: {
+        prototype: HTMLGcdsExtMwsFeaturedLinkElement;
+        new (): HTMLGcdsExtMwsFeaturedLinkElement;
+    };
     interface HTMLGcdsExtMwsServicesElement extends Components.GcdsExtMwsServices, HTMLStencilElement {
     }
     var HTMLGcdsExtMwsServicesElement: {
@@ -51,6 +75,7 @@ declare global {
         new (): HTMLGcdsExtMwsServicesItemElement;
     };
     interface HTMLElementTagNameMap {
+        "gcds-ext-mws-featured-link": HTMLGcdsExtMwsFeaturedLinkElement;
         "gcds-ext-mws-services": HTMLGcdsExtMwsServicesElement;
         "gcds-ext-mws-services-item": HTMLGcdsExtMwsServicesItemElement;
     }
@@ -58,6 +83,24 @@ declare global {
 declare namespace LocalJSX {
     type OneOf<K extends string, PropT, AttrT = PropT> = { [P in K]: PropT } & { [P in `attr:${K}` | `prop:${K}`]?: never } | { [P in `attr:${K}`]: AttrT } & { [P in K | `prop:${K}`]?: never } | { [P in `prop:${K}`]: PropT } & { [P in K | `attr:${K}`]?: never };
 
+    interface GcdsExtMwsFeaturedLink {
+        /**
+          * Background color for the featured link section, as a hex value (e.g. "#FF0000").
+         */
+        "bgColor"?: string;
+        /**
+          * Description shown under the link. Optional, and takes priority over the `description` slot if both are provided.
+         */
+        "description"?: string;
+        /**
+          * URL for the featured link. Mandatory if the `link` slot is not used.
+         */
+        "href"?: string;
+        /**
+          * Text for the featured link. Mandatory if the `link` slot is not used.
+         */
+        "linkText"?: string;
+    }
     interface GcdsExtMwsServices {
         /**
           * Number of columns to distribute items across. Allowed values: 1, 2, 3.
@@ -89,6 +132,12 @@ declare namespace LocalJSX {
         "href": string;
     }
 
+    interface GcdsExtMwsFeaturedLinkAttributes {
+        "href": string;
+        "linkText": string;
+        "description": string;
+        "bgColor": string;
+    }
     interface GcdsExtMwsServicesAttributes {
         "heading": string;
         "hideHeading": boolean;
@@ -101,6 +150,7 @@ declare namespace LocalJSX {
     }
 
     interface IntrinsicElements {
+        "gcds-ext-mws-featured-link": Omit<GcdsExtMwsFeaturedLink, keyof GcdsExtMwsFeaturedLinkAttributes> & { [K in keyof GcdsExtMwsFeaturedLink & keyof GcdsExtMwsFeaturedLinkAttributes]?: GcdsExtMwsFeaturedLink[K] } & { [K in keyof GcdsExtMwsFeaturedLink & keyof GcdsExtMwsFeaturedLinkAttributes as `attr:${K}`]?: GcdsExtMwsFeaturedLinkAttributes[K] } & { [K in keyof GcdsExtMwsFeaturedLink & keyof GcdsExtMwsFeaturedLinkAttributes as `prop:${K}`]?: GcdsExtMwsFeaturedLink[K] };
         "gcds-ext-mws-services": Omit<GcdsExtMwsServices, keyof GcdsExtMwsServicesAttributes> & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes]?: GcdsExtMwsServices[K] } & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes as `attr:${K}`]?: GcdsExtMwsServicesAttributes[K] } & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes as `prop:${K}`]?: GcdsExtMwsServices[K] } & OneOf<"heading", GcdsExtMwsServices["heading"], GcdsExtMwsServicesAttributes["heading"]>;
         "gcds-ext-mws-services-item": Omit<GcdsExtMwsServicesItem, keyof GcdsExtMwsServicesItemAttributes> & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes]?: GcdsExtMwsServicesItem[K] } & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes as `attr:${K}`]?: GcdsExtMwsServicesItemAttributes[K] } & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes as `prop:${K}`]?: GcdsExtMwsServicesItem[K] } & OneOf<"href", GcdsExtMwsServicesItem["href"], GcdsExtMwsServicesItemAttributes["href"]>;
     }
@@ -109,6 +159,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "gcds-ext-mws-featured-link": LocalJSX.IntrinsicElements["gcds-ext-mws-featured-link"] & JSXBase.HTMLAttributes<HTMLGcdsExtMwsFeaturedLinkElement>;
             "gcds-ext-mws-services": LocalJSX.IntrinsicElements["gcds-ext-mws-services"] & JSXBase.HTMLAttributes<HTMLGcdsExtMwsServicesElement>;
             "gcds-ext-mws-services-item": LocalJSX.IntrinsicElements["gcds-ext-mws-services-item"] & JSXBase.HTMLAttributes<HTMLGcdsExtMwsServicesItemElement>;
         }

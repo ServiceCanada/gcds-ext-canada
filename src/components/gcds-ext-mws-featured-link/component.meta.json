@@ -1,0 +1,20 @@
+{
+  "name": {
+    "en": "Featured link",
+    "fr": "Lien en vedette"
+  },
+  "tag": "gcds-ext-mws-featured-link",
+  "image": {
+    "en": "featured-link.svg",
+    "fr": "featured-link.svg"
+  },
+  "description": {
+    "en": "Short, descriptive link that your institution needs to feature prominently on a landing page.",
+    "fr": "Hyperlien court et descriptif que votre institution doit mettre en évidence sur une page d’accueil."
+  },
+  "status": "stable",
+  "docsPath": {
+    "en": "featured-link",
+    "fr": "lien-en-vedette"
+  }
+}
