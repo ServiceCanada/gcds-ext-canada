@@ -5,7 +5,125 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { SuggestionOption } from "./components/gcds-ext-mws-combobox/suggestion-option";
+import { Validator, ValidatorEntry } from "./validators";
+export { SuggestionOption } from "./components/gcds-ext-mws-combobox/suggestion-option";
+export { Validator, ValidatorEntry } from "./validators";
 export namespace Components {
+    interface GcdsExtMwsCombobox {
+        /**
+          * Specifies if an input element should be focused on component render.
+          * @default false
+         */
+        "autofocus": boolean;
+        "checkValidity": () => Promise<boolean>;
+        /**
+          * Specifies if an input element is disabled or not.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * If true, a "Select All" option will be displayed at the top of the list of options.
+          * @default false
+         */
+        "enableSelectAll": boolean;
+        /**
+          * Error message for an invalid input element.
+         */
+        "errorMessage"?: string;
+        /**
+          * The ID of the form that the input field belongs to.
+         */
+        "form"?: string;
+        /**
+          * Return a copy of the selected option objects.
+         */
+        "getSelectedOptions": () => Promise<SuggestionOption[]>;
+        /**
+          * Return the selected option values for form and application code.
+         */
+        "getSelectedValues": () => Promise<string[]>;
+        "getValidationMessage": () => Promise<string>;
+        /**
+          * If true, the label will be visually hidden but still accessible to screen readers.
+          * @default false
+         */
+        "hideLabel": boolean;
+        /**
+          * Hint displayed below the label and above the input field.
+         */
+        "hint"?: string;
+        /**
+          * Id attribute for the combobox input element.
+         */
+        "inputId": string;
+        /**
+          * Form field label
+         */
+        "label": string;
+        /**
+          * Name attribute for the combobox input element.
+         */
+        "name": string;
+        /**
+          * JSON option array, or URL returning objects with `name` and `tag` fields.
+         */
+        "options"?: string | SuggestionOption[];
+        /**
+          * Specifies if a form field is required or not.
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * Select every option and collapse the list.
+         */
+        "selectAll": () => Promise<void>;
+        /**
+          * Selected options, available for programmatic updates.
+          * @default []
+         */
+        "selectedOptions": SuggestionOption[];
+        /**
+          * Focus the search field and open its list of options.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Replace the option list using objects whose keys are option values and values are display labels, then retain selections that still exist.
+         */
+        "setOptions": (options: Array<Record<string, unknown>>) => Promise<void>;
+        /**
+          * Set selected options, ignoring values that are not in the option list.
+         */
+        "setSelectedOptions": (items: SuggestionOption[]) => Promise<void>;
+        /**
+          * Clear all selected options.
+         */
+        "unselectAll": () => Promise<void>;
+        /**
+          * Run configured validators against the selected values.
+         */
+        "validate": () => Promise<void>;
+        /**
+          * Set event to call validator
+          * @default 'blur'
+         */
+        "validateOn": 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator": Array<
+    string | ValidatorEntry | Validator<string>
+  >;
+        /**
+          * Read-only property of the combobox, returns a ValidityState object that represents the validity states this element is in.
+          * @readonly
+         */
+        "validity": ValidityState;
+        /**
+          * Initial selected values.
+         */
+        "value"?: string | string[];
+    }
     interface GcdsExtMwsServices {
         /**
           * Number of columns to distribute items across. Allowed values: 1, 2, 3.
@@ -37,7 +155,33 @@ export namespace Components {
         "href": string;
     }
 }
+export interface GcdsExtMwsComboboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsExtMwsComboboxElement;
+}
 declare global {
+    interface HTMLGcdsExtMwsComboboxElementEventMap {
+        "gcdsChange": SuggestionOption[];
+        "gcdsInput": string;
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsError": object;
+        "gcdsValid": object;
+    }
+    interface HTMLGcdsExtMwsComboboxElement extends Components.GcdsExtMwsCombobox, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsExtMwsComboboxElementEventMap>(type: K, listener: (this: HTMLGcdsExtMwsComboboxElement, ev: GcdsExtMwsComboboxCustomEvent<HTMLGcdsExtMwsComboboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsExtMwsComboboxElementEventMap>(type: K, listener: (this: HTMLGcdsExtMwsComboboxElement, ev: GcdsExtMwsComboboxCustomEvent<HTMLGcdsExtMwsComboboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLGcdsExtMwsComboboxElement: {
+        prototype: HTMLGcdsExtMwsComboboxElement;
+        new (): HTMLGcdsExtMwsComboboxElement;
+    };
     interface HTMLGcdsExtMwsServicesElement extends Components.GcdsExtMwsServices, HTMLStencilElement {
     }
     var HTMLGcdsExtMwsServicesElement: {
@@ -51,6 +195,7 @@ declare global {
         new (): HTMLGcdsExtMwsServicesItemElement;
     };
     interface HTMLElementTagNameMap {
+        "gcds-ext-mws-combobox": HTMLGcdsExtMwsComboboxElement;
         "gcds-ext-mws-services": HTMLGcdsExtMwsServicesElement;
         "gcds-ext-mws-services-item": HTMLGcdsExtMwsServicesItemElement;
     }
@@ -58,6 +203,110 @@ declare global {
 declare namespace LocalJSX {
     type OneOf<K extends string, PropT, AttrT = PropT> = { [P in K]: PropT } & { [P in `attr:${K}` | `prop:${K}`]?: never } | { [P in `attr:${K}`]: AttrT } & { [P in K | `prop:${K}`]?: never } | { [P in `prop:${K}`]: PropT } & { [P in K | `attr:${K}`]?: never };
 
+    interface GcdsExtMwsCombobox {
+        /**
+          * Specifies if an input element should be focused on component render.
+          * @default false
+         */
+        "autofocus"?: boolean;
+        /**
+          * Specifies if an input element is disabled or not.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * If true, a "Select All" option will be displayed at the top of the list of options.
+          * @default false
+         */
+        "enableSelectAll"?: boolean;
+        /**
+          * Error message for an invalid input element.
+         */
+        "errorMessage"?: string;
+        /**
+          * The ID of the form that the input field belongs to.
+         */
+        "form"?: string;
+        /**
+          * If true, the label will be visually hidden but still accessible to screen readers.
+          * @default false
+         */
+        "hideLabel"?: boolean;
+        /**
+          * Hint displayed below the label and above the input field.
+         */
+        "hint"?: string;
+        /**
+          * Id attribute for the combobox input element.
+         */
+        "inputId": string;
+        /**
+          * Form field label
+         */
+        "label": string;
+        /**
+          * Name attribute for the combobox input element.
+         */
+        "name": string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onGcdsBlur"?: (event: GcdsExtMwsComboboxCustomEvent<void>) => void;
+        /**
+          * Emitted when the input has changed.
+         */
+        "onGcdsChange"?: (event: GcdsExtMwsComboboxCustomEvent<SuggestionOption[]>) => void;
+        /**
+          * Emitted when the element is invalid.
+         */
+        "onGcdsError"?: (event: GcdsExtMwsComboboxCustomEvent<object>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onGcdsFocus"?: (event: GcdsExtMwsComboboxCustomEvent<void>) => void;
+        /**
+          * Emitted when the element has received input.
+         */
+        "onGcdsInput"?: (event: GcdsExtMwsComboboxCustomEvent<string>) => void;
+        /**
+          * Emitted when the input has a validation error.
+         */
+        "onGcdsValid"?: (event: GcdsExtMwsComboboxCustomEvent<object>) => void;
+        /**
+          * JSON option array, or URL returning objects with `name` and `tag` fields.
+         */
+        "options"?: string | SuggestionOption[];
+        /**
+          * Specifies if a form field is required or not.
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * Selected options, available for programmatic updates.
+          * @default []
+         */
+        "selectedOptions"?: SuggestionOption[];
+        /**
+          * Set event to call validator
+          * @default 'blur'
+         */
+        "validateOn"?: 'blur' | 'submit' | 'other';
+        /**
+          * Array of validators
+         */
+        "validator"?: Array<
+    string | ValidatorEntry | Validator<string>
+  >;
+        /**
+          * Read-only property of the combobox, returns a ValidityState object that represents the validity states this element is in.
+          * @readonly
+         */
+        "validity"?: ValidityState;
+        /**
+          * Initial selected values.
+         */
+        "value"?: string | string[];
+    }
     interface GcdsExtMwsServices {
         /**
           * Number of columns to distribute items across. Allowed values: 1, 2, 3.
@@ -89,6 +338,22 @@ declare namespace LocalJSX {
         "href": string;
     }
 
+    interface GcdsExtMwsComboboxAttributes {
+        "inputId": string;
+        "name": string;
+        "label": string;
+        "hideLabel": boolean;
+        "hint": string;
+        "options": string | SuggestionOption[];
+        "required": boolean;
+        "disabled": boolean;
+        "autofocus": boolean;
+        "form": string;
+        "enableSelectAll": boolean;
+        "errorMessage": string;
+        "value": string | string[];
+        "validateOn": 'blur' | 'submit' | 'other';
+    }
     interface GcdsExtMwsServicesAttributes {
         "heading": string;
         "hideHeading": boolean;
@@ -101,6 +366,7 @@ declare namespace LocalJSX {
     }
 
     interface IntrinsicElements {
+        "gcds-ext-mws-combobox": Omit<GcdsExtMwsCombobox, keyof GcdsExtMwsComboboxAttributes> & { [K in keyof GcdsExtMwsCombobox & keyof GcdsExtMwsComboboxAttributes]?: GcdsExtMwsCombobox[K] } & { [K in keyof GcdsExtMwsCombobox & keyof GcdsExtMwsComboboxAttributes as `attr:${K}`]?: GcdsExtMwsComboboxAttributes[K] } & { [K in keyof GcdsExtMwsCombobox & keyof GcdsExtMwsComboboxAttributes as `prop:${K}`]?: GcdsExtMwsCombobox[K] } & OneOf<"inputId", GcdsExtMwsCombobox["inputId"], GcdsExtMwsComboboxAttributes["inputId"]> & OneOf<"name", GcdsExtMwsCombobox["name"], GcdsExtMwsComboboxAttributes["name"]> & OneOf<"label", GcdsExtMwsCombobox["label"], GcdsExtMwsComboboxAttributes["label"]>;
         "gcds-ext-mws-services": Omit<GcdsExtMwsServices, keyof GcdsExtMwsServicesAttributes> & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes]?: GcdsExtMwsServices[K] } & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes as `attr:${K}`]?: GcdsExtMwsServicesAttributes[K] } & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes as `prop:${K}`]?: GcdsExtMwsServices[K] } & OneOf<"heading", GcdsExtMwsServices["heading"], GcdsExtMwsServicesAttributes["heading"]>;
         "gcds-ext-mws-services-item": Omit<GcdsExtMwsServicesItem, keyof GcdsExtMwsServicesItemAttributes> & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes]?: GcdsExtMwsServicesItem[K] } & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes as `attr:${K}`]?: GcdsExtMwsServicesItemAttributes[K] } & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes as `prop:${K}`]?: GcdsExtMwsServicesItem[K] } & OneOf<"href", GcdsExtMwsServicesItem["href"], GcdsExtMwsServicesItemAttributes["href"]>;
     }
@@ -109,6 +375,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "gcds-ext-mws-combobox": LocalJSX.IntrinsicElements["gcds-ext-mws-combobox"] & JSXBase.HTMLAttributes<HTMLGcdsExtMwsComboboxElement>;
             "gcds-ext-mws-services": LocalJSX.IntrinsicElements["gcds-ext-mws-services"] & JSXBase.HTMLAttributes<HTMLGcdsExtMwsServicesElement>;
             "gcds-ext-mws-services-item": LocalJSX.IntrinsicElements["gcds-ext-mws-services-item"] & JSXBase.HTMLAttributes<HTMLGcdsExtMwsServicesItemElement>;
         }
