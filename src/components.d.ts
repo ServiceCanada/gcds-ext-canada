@@ -6,6 +6,27 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface GcdsExtMwsMostRequested {
+        /**
+          * Heading text (required)
+         */
+        "heading": string;
+        /**
+          * Hide the heading visually.
+          * @default false
+         */
+        "hideHeading"?: boolean;
+    }
+    interface GcdsExtMwsMostRequestedItem {
+        /**
+          * Link href (required)
+         */
+        "href": string;
+        /**
+          * Link text.  Used as a fallback when the default slot is not provided.
+         */
+        "text"?: string;
+    }
     interface GcdsExtMwsServices {
         /**
           * Number of columns to distribute items across. Allowed values: 1, 2, 3.
@@ -38,6 +59,18 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLGcdsExtMwsMostRequestedElement extends Components.GcdsExtMwsMostRequested, HTMLStencilElement {
+    }
+    var HTMLGcdsExtMwsMostRequestedElement: {
+        prototype: HTMLGcdsExtMwsMostRequestedElement;
+        new (): HTMLGcdsExtMwsMostRequestedElement;
+    };
+    interface HTMLGcdsExtMwsMostRequestedItemElement extends Components.GcdsExtMwsMostRequestedItem, HTMLStencilElement {
+    }
+    var HTMLGcdsExtMwsMostRequestedItemElement: {
+        prototype: HTMLGcdsExtMwsMostRequestedItemElement;
+        new (): HTMLGcdsExtMwsMostRequestedItemElement;
+    };
     interface HTMLGcdsExtMwsServicesElement extends Components.GcdsExtMwsServices, HTMLStencilElement {
     }
     var HTMLGcdsExtMwsServicesElement: {
@@ -51,6 +84,8 @@ declare global {
         new (): HTMLGcdsExtMwsServicesItemElement;
     };
     interface HTMLElementTagNameMap {
+        "gcds-ext-mws-most-requested": HTMLGcdsExtMwsMostRequestedElement;
+        "gcds-ext-mws-most-requested-item": HTMLGcdsExtMwsMostRequestedItemElement;
         "gcds-ext-mws-services": HTMLGcdsExtMwsServicesElement;
         "gcds-ext-mws-services-item": HTMLGcdsExtMwsServicesItemElement;
     }
@@ -58,6 +93,27 @@ declare global {
 declare namespace LocalJSX {
     type OneOf<K extends string, PropT, AttrT = PropT> = { [P in K]: PropT } & { [P in `attr:${K}` | `prop:${K}`]?: never } | { [P in `attr:${K}`]: AttrT } & { [P in K | `prop:${K}`]?: never } | { [P in `prop:${K}`]: PropT } & { [P in K | `attr:${K}`]?: never };
 
+    interface GcdsExtMwsMostRequested {
+        /**
+          * Heading text (required)
+         */
+        "heading": string;
+        /**
+          * Hide the heading visually.
+          * @default false
+         */
+        "hideHeading"?: boolean;
+    }
+    interface GcdsExtMwsMostRequestedItem {
+        /**
+          * Link href (required)
+         */
+        "href": string;
+        /**
+          * Link text.  Used as a fallback when the default slot is not provided.
+         */
+        "text"?: string;
+    }
     interface GcdsExtMwsServices {
         /**
           * Number of columns to distribute items across. Allowed values: 1, 2, 3.
@@ -89,6 +145,14 @@ declare namespace LocalJSX {
         "href": string;
     }
 
+    interface GcdsExtMwsMostRequestedAttributes {
+        "heading": string;
+        "hideHeading": boolean;
+    }
+    interface GcdsExtMwsMostRequestedItemAttributes {
+        "href": string;
+        "text": string;
+    }
     interface GcdsExtMwsServicesAttributes {
         "heading": string;
         "hideHeading": boolean;
@@ -101,6 +165,8 @@ declare namespace LocalJSX {
     }
 
     interface IntrinsicElements {
+        "gcds-ext-mws-most-requested": Omit<GcdsExtMwsMostRequested, keyof GcdsExtMwsMostRequestedAttributes> & { [K in keyof GcdsExtMwsMostRequested & keyof GcdsExtMwsMostRequestedAttributes]?: GcdsExtMwsMostRequested[K] } & { [K in keyof GcdsExtMwsMostRequested & keyof GcdsExtMwsMostRequestedAttributes as `attr:${K}`]?: GcdsExtMwsMostRequestedAttributes[K] } & { [K in keyof GcdsExtMwsMostRequested & keyof GcdsExtMwsMostRequestedAttributes as `prop:${K}`]?: GcdsExtMwsMostRequested[K] } & OneOf<"heading", GcdsExtMwsMostRequested["heading"], GcdsExtMwsMostRequestedAttributes["heading"]>;
+        "gcds-ext-mws-most-requested-item": Omit<GcdsExtMwsMostRequestedItem, keyof GcdsExtMwsMostRequestedItemAttributes> & { [K in keyof GcdsExtMwsMostRequestedItem & keyof GcdsExtMwsMostRequestedItemAttributes]?: GcdsExtMwsMostRequestedItem[K] } & { [K in keyof GcdsExtMwsMostRequestedItem & keyof GcdsExtMwsMostRequestedItemAttributes as `attr:${K}`]?: GcdsExtMwsMostRequestedItemAttributes[K] } & { [K in keyof GcdsExtMwsMostRequestedItem & keyof GcdsExtMwsMostRequestedItemAttributes as `prop:${K}`]?: GcdsExtMwsMostRequestedItem[K] } & OneOf<"href", GcdsExtMwsMostRequestedItem["href"], GcdsExtMwsMostRequestedItemAttributes["href"]>;
         "gcds-ext-mws-services": Omit<GcdsExtMwsServices, keyof GcdsExtMwsServicesAttributes> & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes]?: GcdsExtMwsServices[K] } & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes as `attr:${K}`]?: GcdsExtMwsServicesAttributes[K] } & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes as `prop:${K}`]?: GcdsExtMwsServices[K] } & OneOf<"heading", GcdsExtMwsServices["heading"], GcdsExtMwsServicesAttributes["heading"]>;
         "gcds-ext-mws-services-item": Omit<GcdsExtMwsServicesItem, keyof GcdsExtMwsServicesItemAttributes> & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes]?: GcdsExtMwsServicesItem[K] } & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes as `attr:${K}`]?: GcdsExtMwsServicesItemAttributes[K] } & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes as `prop:${K}`]?: GcdsExtMwsServicesItem[K] } & OneOf<"href", GcdsExtMwsServicesItem["href"], GcdsExtMwsServicesItemAttributes["href"]>;
     }
@@ -109,6 +175,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "gcds-ext-mws-most-requested": LocalJSX.IntrinsicElements["gcds-ext-mws-most-requested"] & JSXBase.HTMLAttributes<HTMLGcdsExtMwsMostRequestedElement>;
+            "gcds-ext-mws-most-requested-item": LocalJSX.IntrinsicElements["gcds-ext-mws-most-requested-item"] & JSXBase.HTMLAttributes<HTMLGcdsExtMwsMostRequestedItemElement>;
             "gcds-ext-mws-services": LocalJSX.IntrinsicElements["gcds-ext-mws-services"] & JSXBase.HTMLAttributes<HTMLGcdsExtMwsServicesElement>;
             "gcds-ext-mws-services-item": LocalJSX.IntrinsicElements["gcds-ext-mws-services-item"] & JSXBase.HTMLAttributes<HTMLGcdsExtMwsServicesItemElement>;
         }

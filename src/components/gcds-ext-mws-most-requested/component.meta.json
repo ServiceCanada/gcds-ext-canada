@@ -1,0 +1,16 @@
+{
+  "name": {
+    "en": "Most requested",
+    "fr": "En demande"
+  },
+  "tag": "gcds-ext-mws-most-requested",
+  "description": {
+    "en": "Presents a short list of high-demand links for Canada.ca home and navigation pages.",
+    "fr": "Présente une courte liste de liens en demande pour les pages d’accueil et de navigation de Canada.ca."
+  },
+  "status": "draft",
+  "docsPath": {
+    "en": "most-requested",
+    "fr": "plus-demandes"
+  }
+}
