@@ -1,0 +1,57 @@
+---
+layout: layouts/component.njk
+title: Recherche
+lang: fr
+component: gcds-ext-mws-search
+altPage: /en/components/search/index.html
+permalink: /fr/composants/recherche/index.html
+dateModified: "2026-11-09"
+---
+
+<h1>Recherche</h1>
+<p><code>&lt;gcds-ext-mws-search&gt;</code> fournit un formulaire de recherche autonome de Canada.ca avec des suggestions de requêtes accessibles, récupérées au fur et à mesure de la saisie. Il s’appuie sur le <a href="https://systeme-design.canada.ca/fr/composants/recherche/" target="_blank">composant de recherche du SDGC</a>. Cette version ajoute les propriétés suivantes :</p>
+<ul class="list-disc mb-300">
+  <li><code>suggestions-access-token</code></li>
+  <li><code>suggestions-organization-id</code></li>
+  <li><code>suggestions-max-items</code></li>
+  <li><code>suggestions-min-characters</code></li>
+  <li><code>suggestions-pipeline</code></li>
+  <li><code>suggestions-search-hub</code></li>
+  <li><code>suggestions-endpoint</code></li>
+</ul>
+<p>Toutes ces propriétés servent à configurer les suggestions de recherche.</p>
+
+<h2>Configurer les suggestions (par défaut)</h2>
+<p>Un jeton d’accès est la seule propriété obligatoire pour afficher des suggestions.</p>
+<gcds-ext-mws-search 
+  action="https://www.canada.ca/en/sr.html"
+  suggestions-access-token="xx27395007-5c98-43c0-bef0-553131a34e90"></gcds-ext-mws-search>
+
+<gcds-details details-title="Exemple de code">
+{% highlight "html" %}
+<gcds-ext-mws-search
+  action="https://www.canada.ca/en/sr.html"
+  suggestions-access-token="xx27395007-5c98-43c0-bef0-553131a34e90"
+></gcds-ext-mws-search>
+{% endhighlight %}
+</gcds-details>
+
+<h2>Configurer les suggestions (personnalisées)</h2>
+<p>Vous pouvez ajuster le nombre de suggestions affichées et le nombre minimum de caractères requis pour déclencher les suggestions. Les autres propriétés devraient rester inchangées pour la plupart des cas d’utilisation.</p>
+<gcds-ext-mws-search 
+  action="https://www.canada.ca/en/sr.html"
+  suggestions-access-token="xx27395007-5c98-43c0-bef0-553131a34e90"
+  suggestions-max-items="10"
+  suggestions-min-characters="5"
+></gcds-ext-mws-search>
+
+<gcds-details details-title="Exemple de code">
+{% highlight "html" %}
+<gcds-ext-mws-search
+  action="https://www.canada.ca/en/sr.html"
+  suggestions-access-token="xx27395007-5c98-43c0-bef0-553131a34e90"
+  suggestions-max-items="10"
+  suggestions-min-characters="5"
+></gcds-ext-mws-search>
+{% endhighlight %}
+</gcds-details>

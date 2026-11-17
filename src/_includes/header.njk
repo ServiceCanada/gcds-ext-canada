@@ -1,5 +1,5 @@
 <gcds-header lang-href="{{ altPage | url }}" skip-to-href="#main-content">
-    <gcds-search slot="search"></gcds-search>
+    <gcds-ext-mws-search slot="search" suggestions-access-token="xx27395007-5c98-43c0-bef0-553131a34e90"></gcds-ext-mws-search>
     <gcds-breadcrumbs slot="breadcrumb">
         {% if not home %}
         <gcds-breadcrumbs-item href="{{ ('/' ~ lang) | url }}">{{ i18n.breadcrumbMWS }}</gcds-breadcrumbs-item>

@@ -1,0 +1,14 @@
+{
+  "name": { "en": "Search", "fr": "Recherche" },
+  "tag": "gcds-ext-mws-search",
+  "image": {
+    "en": "preview-search.svg",
+    "fr": "preview-search.svg"
+  },
+  "description": {
+    "en": "Search is a space for entering keywords to find relevant information.",
+    "fr": "Le composant recherche est un espace où entrer des mots-clés pour chercher des renseignements pertinents."
+  },
+  "status": "experimental",
+  "docsPath": { "en": "search", "fr": "recherche" }
+}

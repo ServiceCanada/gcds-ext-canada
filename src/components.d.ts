@@ -6,6 +6,75 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    /**
+     * Search is a space for entering keywords to find relevant information.
+     */
+    interface GcdsExtMwsSearch {
+        /**
+          * Sets the action for the search form. Default will be canada.ca global search
+          * @default '/sr/srb.html'
+         */
+        "action": string;
+        /**
+          * Set the form method of the search form
+          * @default 'get'
+         */
+        "method": 'get' | 'post';
+        /**
+          * Set the name of the search input
+          * @default 'q'
+         */
+        "name": string;
+        /**
+          * Set the placeholder and label for the search input. Becomes "Search [placeholder]"
+          * @default 'Canada.ca'
+         */
+        "placeholder": string;
+        /**
+          * Set the id of the search input
+          * @default 'search'
+         */
+        "searchId": string;
+        /**
+          * Bearer token used to access the suggestions API. Suggestions are disabled when omitted.
+          * @default ''
+         */
+        "suggestionsAccessToken": string;
+        /**
+          * Base URL for the Canada.ca query suggestions API, without the /querySuggest path.
+          * @default 'https://apps.canada.ca/search'
+         */
+        "suggestionsEndpoint": string;
+        /**
+          * Maximum number of suggestions requested from the API.
+          * @default 5
+         */
+        "suggestionsMaxItems": number;
+        /**
+          * Minimum number of input characters before suggestions are requested.
+          * @default 3
+         */
+        "suggestionsMinCharacters": number;
+        /**
+          * Organization ID used to access the suggestions API.
+          * @default ''
+         */
+        "suggestionsOrganizationId": string;
+        /**
+          * Pipeline sent with each suggestions request.
+          * @default ''
+         */
+        "suggestionsPipeline": string;
+        /**
+          * Search hub sent with each suggestions request.
+          * @default ''
+         */
+        "suggestionsSearchHub": string;
+        /**
+          * Set the value of the search input
+         */
+        "value": string;
+    }
     interface GcdsExtMwsServices {
         /**
           * Number of columns to distribute items across. Allowed values: 1, 2, 3.
@@ -37,7 +106,35 @@ export namespace Components {
         "href": string;
     }
 }
+export interface GcdsExtMwsSearchCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGcdsExtMwsSearchElement;
+}
 declare global {
+    interface HTMLGcdsExtMwsSearchElementEventMap {
+        "gcdsInput": string;
+        "gcdsChange": string;
+        "gcdsFocus": void;
+        "gcdsBlur": void;
+        "gcdsSubmit": string;
+    }
+    /**
+     * Search is a space for entering keywords to find relevant information.
+     */
+    interface HTMLGcdsExtMwsSearchElement extends Components.GcdsExtMwsSearch, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGcdsExtMwsSearchElementEventMap>(type: K, listener: (this: HTMLGcdsExtMwsSearchElement, ev: GcdsExtMwsSearchCustomEvent<HTMLGcdsExtMwsSearchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGcdsExtMwsSearchElementEventMap>(type: K, listener: (this: HTMLGcdsExtMwsSearchElement, ev: GcdsExtMwsSearchCustomEvent<HTMLGcdsExtMwsSearchElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLGcdsExtMwsSearchElement: {
+        prototype: HTMLGcdsExtMwsSearchElement;
+        new (): HTMLGcdsExtMwsSearchElement;
+    };
     interface HTMLGcdsExtMwsServicesElement extends Components.GcdsExtMwsServices, HTMLStencilElement {
     }
     var HTMLGcdsExtMwsServicesElement: {
@@ -51,6 +148,7 @@ declare global {
         new (): HTMLGcdsExtMwsServicesItemElement;
     };
     interface HTMLElementTagNameMap {
+        "gcds-ext-mws-search": HTMLGcdsExtMwsSearchElement;
         "gcds-ext-mws-services": HTMLGcdsExtMwsServicesElement;
         "gcds-ext-mws-services-item": HTMLGcdsExtMwsServicesItemElement;
     }
@@ -58,6 +156,95 @@ declare global {
 declare namespace LocalJSX {
     type OneOf<K extends string, PropT, AttrT = PropT> = { [P in K]: PropT } & { [P in `attr:${K}` | `prop:${K}`]?: never } | { [P in `attr:${K}`]: AttrT } & { [P in K | `prop:${K}`]?: never } | { [P in `prop:${K}`]: PropT } & { [P in K | `attr:${K}`]?: never };
 
+    /**
+     * Search is a space for entering keywords to find relevant information.
+     */
+    interface GcdsExtMwsSearch {
+        /**
+          * Sets the action for the search form. Default will be canada.ca global search
+          * @default '/sr/srb.html'
+         */
+        "action"?: string;
+        /**
+          * Set the form method of the search form
+          * @default 'get'
+         */
+        "method"?: 'get' | 'post';
+        /**
+          * Set the name of the search input
+          * @default 'q'
+         */
+        "name"?: string;
+        /**
+          * Emitted when the search input has lost focus.
+         */
+        "onGcdsBlur"?: (event: GcdsExtMwsSearchCustomEvent<void>) => void;
+        /**
+          * Emitted when the search input value has changed.
+         */
+        "onGcdsChange"?: (event: GcdsExtMwsSearchCustomEvent<string>) => void;
+        /**
+          * Emitted when the search input has gained focus.
+         */
+        "onGcdsFocus"?: (event: GcdsExtMwsSearchCustomEvent<void>) => void;
+        /**
+          * Emitted when the search element has received input.
+         */
+        "onGcdsInput"?: (event: GcdsExtMwsSearchCustomEvent<string>) => void;
+        /**
+          * Emitted when the search form has submitted.
+         */
+        "onGcdsSubmit"?: (event: GcdsExtMwsSearchCustomEvent<string>) => void;
+        /**
+          * Set the placeholder and label for the search input. Becomes "Search [placeholder]"
+          * @default 'Canada.ca'
+         */
+        "placeholder"?: string;
+        /**
+          * Set the id of the search input
+          * @default 'search'
+         */
+        "searchId"?: string;
+        /**
+          * Bearer token used to access the suggestions API. Suggestions are disabled when omitted.
+          * @default ''
+         */
+        "suggestionsAccessToken"?: string;
+        /**
+          * Base URL for the Canada.ca query suggestions API, without the /querySuggest path.
+          * @default 'https://apps.canada.ca/search'
+         */
+        "suggestionsEndpoint"?: string;
+        /**
+          * Maximum number of suggestions requested from the API.
+          * @default 5
+         */
+        "suggestionsMaxItems"?: number;
+        /**
+          * Minimum number of input characters before suggestions are requested.
+          * @default 3
+         */
+        "suggestionsMinCharacters"?: number;
+        /**
+          * Organization ID used to access the suggestions API.
+          * @default ''
+         */
+        "suggestionsOrganizationId"?: string;
+        /**
+          * Pipeline sent with each suggestions request.
+          * @default ''
+         */
+        "suggestionsPipeline"?: string;
+        /**
+          * Search hub sent with each suggestions request.
+          * @default ''
+         */
+        "suggestionsSearchHub"?: string;
+        /**
+          * Set the value of the search input
+         */
+        "value"?: string;
+    }
     interface GcdsExtMwsServices {
         /**
           * Number of columns to distribute items across. Allowed values: 1, 2, 3.
@@ -89,6 +276,21 @@ declare namespace LocalJSX {
         "href": string;
     }
 
+    interface GcdsExtMwsSearchAttributes {
+        "placeholder": string;
+        "action": string;
+        "method": 'get' | 'post';
+        "name": string;
+        "searchId": string;
+        "value": string;
+        "suggestionsEndpoint": string;
+        "suggestionsOrganizationId": string;
+        "suggestionsAccessToken": string;
+        "suggestionsSearchHub": string;
+        "suggestionsPipeline": string;
+        "suggestionsMaxItems": number;
+        "suggestionsMinCharacters": number;
+    }
     interface GcdsExtMwsServicesAttributes {
         "heading": string;
         "hideHeading": boolean;
@@ -101,6 +303,7 @@ declare namespace LocalJSX {
     }
 
     interface IntrinsicElements {
+        "gcds-ext-mws-search": Omit<GcdsExtMwsSearch, keyof GcdsExtMwsSearchAttributes> & { [K in keyof GcdsExtMwsSearch & keyof GcdsExtMwsSearchAttributes]?: GcdsExtMwsSearch[K] } & { [K in keyof GcdsExtMwsSearch & keyof GcdsExtMwsSearchAttributes as `attr:${K}`]?: GcdsExtMwsSearchAttributes[K] } & { [K in keyof GcdsExtMwsSearch & keyof GcdsExtMwsSearchAttributes as `prop:${K}`]?: GcdsExtMwsSearch[K] };
         "gcds-ext-mws-services": Omit<GcdsExtMwsServices, keyof GcdsExtMwsServicesAttributes> & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes]?: GcdsExtMwsServices[K] } & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes as `attr:${K}`]?: GcdsExtMwsServicesAttributes[K] } & { [K in keyof GcdsExtMwsServices & keyof GcdsExtMwsServicesAttributes as `prop:${K}`]?: GcdsExtMwsServices[K] } & OneOf<"heading", GcdsExtMwsServices["heading"], GcdsExtMwsServicesAttributes["heading"]>;
         "gcds-ext-mws-services-item": Omit<GcdsExtMwsServicesItem, keyof GcdsExtMwsServicesItemAttributes> & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes]?: GcdsExtMwsServicesItem[K] } & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes as `attr:${K}`]?: GcdsExtMwsServicesItemAttributes[K] } & { [K in keyof GcdsExtMwsServicesItem & keyof GcdsExtMwsServicesItemAttributes as `prop:${K}`]?: GcdsExtMwsServicesItem[K] } & OneOf<"href", GcdsExtMwsServicesItem["href"], GcdsExtMwsServicesItemAttributes["href"]>;
     }
@@ -109,6 +312,10 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            /**
+             * Search is a space for entering keywords to find relevant information.
+             */
+            "gcds-ext-mws-search": LocalJSX.IntrinsicElements["gcds-ext-mws-search"] & JSXBase.HTMLAttributes<HTMLGcdsExtMwsSearchElement>;
             "gcds-ext-mws-services": LocalJSX.IntrinsicElements["gcds-ext-mws-services"] & JSXBase.HTMLAttributes<HTMLGcdsExtMwsServicesElement>;
             "gcds-ext-mws-services-item": LocalJSX.IntrinsicElements["gcds-ext-mws-services-item"] & JSXBase.HTMLAttributes<HTMLGcdsExtMwsServicesItemElement>;
         }
