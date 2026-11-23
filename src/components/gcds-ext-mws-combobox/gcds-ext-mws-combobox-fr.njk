@@ -1,0 +1,118 @@
+---
+layout: layouts/component.njk
+title: Boîte combinée
+lang: fr
+component: gcds-ext-mws-combobox
+altPage: /en/components/combobox/index.html
+permalink: /fr/composants/combobox/index.html
+dateModified: "2026-08-25"
+---
+
+<h1>Boîte combinée</h1>
+<p>Le composant <code>&lt;gcds-ext-mws-combobox&gt;</code> est un élément personnalisé qui affiche une liste déroulante d'options parmi lesquelles l'utilisateur peut faire une sélection.</p>
+
+<h2>Par défaut</h2>
+<gcds-ext-mws-combobox
+    label="Légumes"
+    name="legumes-combobox"
+    input-id="legumes-combobox"
+    options='[{"concombre": "Concombre"},{"carotte": "Carotte"},{"brocoli": "Brocoli"},{"epinards": "Jeunes pousses d&#39;épinards"}]'
+>
+</gcds-ext-mws-combobox>
+<gcds-details details-title="Exemple de code">
+    {% highlight "html" %}
+    <gcds-ext-mws-combobox
+    label="Légumes"
+    name="legumes-combobox"
+    input-id="legumes-combobox"
+    options='[{"concombre": "Concombre"},{"carotte": "Carotte"},{"brocoli": "Brocoli"},{"epinards": "Jeunes pousses d&#39;épinards"}]'
+>
+</gcds-ext-mws-combobox>
+    {% endhighlight %}
+</gcds-details>
+
+<h2>À l'aide d'emplacements</h2>
+<gcds-ext-mws-combobox
+    label="Fruits"
+    name="fruits-combobox"
+    input-id="fruits-combobox"
+>
+    <select slot="options">
+        <option value="apple">Pomme</option>
+        <option value="banana">Banane</option>
+        <option value="orange">Orange</option>
+        <option value="grape">Raisin</option>
+    </select>
+</gcds-ext-mws-combobox>
+
+<gcds-details details-title="Exemple de code">
+    {% highlight "html" %}
+    <gcds-ext-mws-combobox
+    label="Fruits"
+    name="fruits-combobox"
+    input-id="fruits-combobox"
+>
+    <select slot="options">
+        <option value="apple">Pomme</option>
+        <option value="banana">Banane</option>
+        <option value="orange">Orange</option>
+        <option value="grape">Raisin</option>
+    </select>
+</gcds-ext-mws-combobox>
+{% endhighlight %}
+</gcds-details>
+
+<h2>Avec un indice et l'option « Tout sélectionner »</h2>
+<gcds-ext-mws-combobox
+    label="Animaux"
+    name="animaux-combobox"
+    input-id="animaux-combobox"
+    options='[{"lion": "Lion"},{"elephant": "Éléphant"},{"girafe": "Girafe"},{"zebre": "Zèbre"}]'
+    enable-select-all
+    hint="Sélectionnez au moins un animal."
+>
+</gcds-ext-mws-combobox>
+<gcds-details details-title="Exemple de code">
+    {% highlight "html" %}
+    <gcds-ext-mws-combobox
+    label="Animaux"
+    name="animaux-combobox"
+    input-id="animaux-combobox"
+    options='[{"lion": "Lion"},{"elephant": "Éléphant"},{"girafe": "Girafe"},{"zebre": "Zèbre"}]'
+    enable-select-all
+    hint="Sélectionnez au moins un animal."
+    required
+>
+</gcds-ext-mws-combobox>
+{% endhighlight %}
+</gcds-details>
+
+<h2>Dans un formulaire, avec un champ obligatoire</h2>
+<form novalidate action="#">
+    <gcds-error-summary listen></gcds-error-summary>
+    <gcds-ext-mws-combobox
+        label="Animaux"
+        name="animaux-combobox"
+        input-id="animaux-combobox"
+        options='[{"lion": "Lion"},{"elephant": "Éléphant"},{"girafe": "Girafe"},{"zebre": "Zèbre"}]'
+        hint="Sélectionnez au moins un animal."
+        required
+    ></gcds-ext-mws-combobox>
+    <gcds-button type="submit">Soumettre</gcds-button>
+</form>
+<gcds-details details-title="Exemple de code">
+    {% highlight "html" %}
+    <form novalidate action="#">
+    <gcds-error-summary listen></gcds-error-summary>
+    <gcds-ext-mws-combobox
+        label="Animaux"
+        name="animaux-combobox"
+        input-id="animaux-combobox"
+        options='[{"lion": "Lion"},{"elephant": "Éléphant"},{"girafe": "Girafe"},{"zebre": "Zèbre"}]'
+        hint="Sélectionnez au moins un animal."
+        required
+    ></gcds-ext-mws-combobox>
+    <gcds-button type="submit">Soumettre</gcds-button>
+</form>
+    {% endhighlight %}
+</gcds-details>
