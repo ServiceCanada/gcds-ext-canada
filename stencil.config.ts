@@ -28,7 +28,12 @@ export const config: Config = {
     {
       type: 'www',
       serviceWorker: null,
-      copy: [],
+      copy: [
+        { 
+          src: '**/test/*.html',
+          dest: 'test'
+        } // For e2e tests, copy the test HTML files to the www/ output.
+      ],
     },
   ],
   testing: {

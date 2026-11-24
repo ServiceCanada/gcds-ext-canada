@@ -15,7 +15,7 @@ export class GcdsExtMwsServices {
   /**
    * Mandatory - Heading text
    */
-  @Prop() heading!: string;
+  @Prop() heading?: string;
 
   /**
    * Hide the Heading visually.
@@ -43,14 +43,12 @@ export class GcdsExtMwsServices {
   }
 
   private getGridColumns() {
-    const mobile = '1fr';
-
     const tabletCols = Math.min(this.columns, 2);
     const tablet = Array(tabletCols).fill('1fr').join(' ');
 
     const desktop = Array(this.columns).fill('1fr').join(' ');
 
-    return { mobile, tablet, desktop };
+    return { tablet, desktop };
   }
 
   private renderHeading() {
@@ -72,14 +70,13 @@ export class GcdsExtMwsServices {
   }
 
   render() {
-    const { mobile, tablet, desktop } = this.getGridColumns();
+    const { tablet, desktop } = this.getGridColumns();
 
     return (
       <div class="gcds-ext-mws-services">
         {this.renderHeading()}
-
         <gcds-grid
-          columns={mobile}
+          columns="1fr"
           columns-tablet={tablet}
           columns-desktop={desktop}
         >

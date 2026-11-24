@@ -8,3 +8,5 @@ blob-report/
 .DS_Store
 *.log
 .stencil/
+playwright-report/
+playwright/.cache/
